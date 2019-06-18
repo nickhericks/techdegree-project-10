@@ -7,8 +7,6 @@ export default class App extends Component {
   constructor() {
 		super();
 		this.state = {
-			gifs: [],
-			loading: true,
 			courses: []
 		};
 	} 
@@ -27,8 +25,6 @@ export default class App extends Component {
 	}
 
 
-
-
 	render() {
 		console.log(this.state.courses);
 	
@@ -41,7 +37,7 @@ export default class App extends Component {
 				<header className="App-header">
 
 					<ul>
-						{currentCourses}
+						{ currentCourses }
 					</ul>
 
 				</header>
