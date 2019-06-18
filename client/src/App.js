@@ -18,7 +18,6 @@ export default class App extends Component {
 		fetch("http://localhost:5000/api/courses")
 		.then(response => response.json())
 		.then(responseData => {
-			console.log(responseData);
 			this.setState({ courses: responseData.courses });
 			console.log(this.state.courses);
 		})
@@ -33,10 +32,6 @@ export default class App extends Component {
 	render() {
 		console.log(this.state.courses);
 	
-		// const numbers = this.state.courses;
-
-		// const listItems = numbers.map( (number, index) => <li key={index}>{number}</li>);
-
 		const currentCourses = this.state.courses.map( (course, index) => (
 			<li key={index}>{course.title}</li>
 		));
@@ -44,9 +39,7 @@ export default class App extends Component {
 		return (
 			<div className="App">
 				<header className="App-header">
-					<p>
-						Edit <code>src/App.js</code> and save to reload.
-					</p>
+
 					<ul>
 						{currentCourses}
 					</ul>
@@ -56,5 +49,3 @@ export default class App extends Component {
 		);
 	}
 }
-
-// export default App;
