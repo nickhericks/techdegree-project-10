@@ -19,7 +19,7 @@ export default class App extends Component {
 		.then(response => response.json())
 		.then(responseData => {
 			console.log(responseData);
-			this.setState({ courses: responseData });
+			this.setState({ courses: responseData.courses });
 			console.log(this.state.courses);
 		})
 		.catch(error =>
@@ -27,14 +27,19 @@ export default class App extends Component {
 		);
 	}
 
-	const currentCourses = this.state.courses.map( course => (
-		<li>{course.title}</li>
-	));
+
+
 
 	render() {
 		console.log(this.state.courses);
+	
+		// const numbers = this.state.courses;
 
+		// const listItems = numbers.map( (number, index) => <li key={index}>{number}</li>);
 
+		const currentCourses = this.state.courses.map( (course, index) => (
+			<li key={index}>{course.title}</li>
+		));
 
 		return (
 			<div className="App">
