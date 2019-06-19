@@ -91,9 +91,36 @@ header {
 .header-container .main-nav ul a {
 	display: block;
   padding: 10px 20px;
-	color: rgb(255, 255, 255);
+	color: #c4c4c4;
 	text-decoration: none;
 	margin-left: 2rem;
 }
 
+.course-list {
+	list-style-type: none;
+	padding-left: 0;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+}
 
+.course-list a {
+	display: block;
+	padding: 2rem;
+	background-color: #69528a;
+	margin: 1rem;
+	color: #c4c4c4;
+	font-size: .8rem;
+	border-radius: 10px;
+	text-decoration: none;
+}
+
+.course-card {
+	flex-basis: 30%;
+}
+
+.course-card-title {
+	color: #fff;
+	font-weight: bold;
+	font-size: 1.125rem;
+}
