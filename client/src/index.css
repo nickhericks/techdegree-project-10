@@ -62,10 +62,11 @@ code {
 }
 
 .app-container {
-  max-width: 1200px;  /* set to 960px or 1200px */
+  max-width: 960px;  /* set to 960px or 1200px */
 	margin: 0 auto;
 }
 
+/* =============== HEADER =============== */
 header {
 	background-color: #45375b;
 }
@@ -96,6 +97,7 @@ header {
 	margin-left: 2rem;
 }
 
+/* =============== COURSE LIST =============== */
 .course-list {
 	list-style-type: none;
 	padding-left: 0;
@@ -153,4 +155,21 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* =============== COURSE DETAIL =============== */
+.details-subheader {
+
+}
+
+.details-page {
+
+}
+
+.details-main {
+
+}
+
+.details-side {
+
 }
