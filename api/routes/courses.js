@@ -41,14 +41,14 @@ router.get('/', asyncHandler( async (req, res) => {
 // Returns a course (including the user that owns the course) for the provided course ID
 router.get('/:id', asyncHandler( async (req, res) => {
 	const course = await Course.findByPk(req.params.id, {
-		attributes: ["id", "title", "description", "userId"],
-		include: [
-			{
-				model: User,
-				attributes: ["id", "firstName", "lastName", "emailAddress"]
-			}
-		]
-	});
+    attributes: ["id", "title", "description", "userId", "estimatedTime", "materialsNeeded"],
+    include: [
+      {
+        model: User,
+        attributes: ["id", "firstName", "lastName", "emailAddress"]
+      }
+    ]
+  });
 	
 	if (course) {
 		res.json({ course });

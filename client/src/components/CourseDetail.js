@@ -28,7 +28,7 @@ export default class CourseDetail extends Component {
     const title = this.state.course.title;
     const description = this.state.course.description;
     const estimatedTime = this.state.course.estimatedTime;
-    const materialsNeeded = this.state.course.MaterialsNeeded;
+    const materialsNeeded = this.state.course.materialsNeeded;
 
 		let materials = materialsNeeded;
 
