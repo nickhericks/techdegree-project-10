@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-// import './App.css';
+import {
+	BrowserRouter,
+	Route,
+	Switch
+} from 'react-router-dom';
 
 // components
 import Header from './components/Header';
@@ -38,9 +42,11 @@ export default class App extends Component {
 		return (
 			<div>
 				<Header />
-				<ul>
-					{ currentCourses }
-				</ul>
+				<div className="appContainer">
+					<ul>
+						{ currentCourses }
+					</ul>
+				</div>
 
 			</div>
 		);

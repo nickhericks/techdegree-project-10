@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 // import PropTypes from "prop-types";
 
 // import Stats from "./Stats";
@@ -7,11 +9,27 @@ import React from "react";
 const Header = (props) => {
   return (
     <header>
-      {/* <Stats players={players} /> */}
+			<div className="appContainer">
 
-      <h1>Courses</h1>
+				{/* <Stats players={players} /> */}
 
-      {/* <Stopwatch /> */}
+				<h1>Courses</h1>
+
+				<nav className="main-nav">
+					<ul>
+						<li>
+							<NavLink to="/mountains">Mountains</NavLink>
+						</li>
+						<li>
+							<NavLink to="/dogs">Dogs</NavLink>
+						</li>
+						<li>
+							<NavLink to="/sunset">Sunset</NavLink>
+						</li>
+					</ul>
+				</nav>
+  );
+			</div>
     </header>
   );
 };
