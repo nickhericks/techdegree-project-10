@@ -61,12 +61,8 @@ export default class App extends Component {
 							: <Gallery pictures={this.state.sunsetResults} query='sunset' />
 						} /> */}
 
-            {/* Route for search queries */}
-            {/* <Route path="/search/:topic" render={ () =>
-							(this.state.loading) 
-							? <p>Loading...</p>
-							: <Gallery pictures={this.state.results} query={this.state.searchTerm} />
-						} /> */}
+            {/* Route for course details */}
+            <Route path="/courses/:id" component={CourseDetail} />
 
             {/* Route for 404 error */}
             <Route component={NotFound} />

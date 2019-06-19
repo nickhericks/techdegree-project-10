@@ -5,7 +5,8 @@ import { NavLink } from "react-router-dom";
 const NotFound = () => {
   return (
     <div>
-      <h3>The page your requested does not exist</h3>
+      <h1>Not Found</h1>
+      <h3>Sorry! We could not find the page you're looking for.</h3>
       <NavLink to={`/`}>
         <div className="">Return to home page</div>
       </NavLink>

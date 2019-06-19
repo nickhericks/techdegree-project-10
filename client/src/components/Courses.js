@@ -33,26 +33,20 @@ export default class Courses extends Component {
 
 
 	render() {
-		console.log(this.state.courses);
 	
-		// const currentCourses = this.state.courses.map( (course, index) => (
-		// 	<li key={index}>{course.title}</li>
-		// ));
-
-
 		let currentCourses;
 		// If array is not empty, iterate over it
 		if (this.state.courses.length > 0) {
-			currentCourses = this.state.courses.map( (course, index) => (
+			currentCourses = this.state.courses.map( course => (
 				<CourseCard
 					id={course.id}
-					key={index}
+					key={course.id}
 					title={course.title}
 				/>
 			));
 		} else {
 			// If array is empty, display NoPics component
-			currentCourses = <li><p>"Nothing to see here"</p></li>;
+			// currentCourses = "";
 		}
 
 		return (
