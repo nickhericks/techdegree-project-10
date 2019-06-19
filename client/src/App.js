@@ -40,15 +40,51 @@ export default class App extends Component {
 		));
 
 		return (
-			<div>
+			<BrowserRouter>
 				<Header />
-				<div className="appContainer">
+				
+				<div className="app-container">
 					<ul>
 						{ currentCourses }
 					</ul>
 				</div>
 
-			</div>
+
+					<Switch>
+						{/* Redirect root path to /mountains */}
+						<Route exact path="/" render={ () =>
+							<Redirect to='/mountains' />
+						} />
+
+						<Route exact path="/mountains" render={ () =>
+							(this.state.loading) 
+							? <p>Loading...</p>
+							: <Gallery pictures={this.state.mountainResults} query='mountains' />
+						} />
+						<Route exact path="/dogs" render={ () =>
+							(this.state.loading) 
+							? <p>Loading...</p>
+							: <Gallery pictures={this.state.dogResults} query='dogs' />
+						} />
+						<Route exact path="/sunset" render={ () =>
+							(this.state.loading) 
+							? <p>Loading...</p>
+							: <Gallery pictures={this.state.sunsetResults} query='sunset' />
+						} />
+
+						{/* Route for search queries */}
+						<Route path="/search/:topic" render={ () =>
+							(this.state.loading) 
+							? <p>Loading...</p>
+							: <Gallery pictures={this.state.results} query={this.state.searchTerm} />
+						} />
+
+
+						{/* Route for 404 error */}
+						<Route component={NotFound} />
+					</Switch>
+
+			</BrowserRouter>
 		);
 	}
 }

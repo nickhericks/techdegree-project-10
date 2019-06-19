@@ -3,32 +3,23 @@ import { NavLink } from "react-router-dom";
 
 // import PropTypes from "prop-types";
 
-// import Stats from "./Stats";
-// import Stopwatch from "./Stopwatch";
-
 const Header = (props) => {
   return (
     <header>
-			<div className="appContainer">
-
-				{/* <Stats players={players} /> */}
+			<div className="app-container header-container">
 
 				<h1>Courses</h1>
 
 				<nav className="main-nav">
 					<ul>
 						<li>
-							<NavLink to="/mountains">Mountains</NavLink>
+							<NavLink to="/signup">Sign Up</NavLink>
 						</li>
 						<li>
-							<NavLink to="/dogs">Dogs</NavLink>
-						</li>
-						<li>
-							<NavLink to="/sunset">Sunset</NavLink>
+							<NavLink to="/signin">Sign In</NavLink>
 						</li>
 					</ul>
 				</nav>
-  );
 			</div>
     </header>
   );

@@ -1,4 +1,4 @@
-* {outline: 1px solid red !important;}
+/* * {outline: 1px solid red !important;} */
 
 /*
 Block elements will have padding and
@@ -61,7 +61,7 @@ code {
     monospace;
 }
 
-.appContainer {
+.app-container {
   max-width: 1200px;  /* set to 960px or 1200px */
 	margin: 0 auto;
 }
@@ -70,12 +70,30 @@ header {
 	background-color: #45375b;
 }
 
-header h1 {
+.header-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.header-container h1 {
 	margin: 0;
 	padding: 1rem;
 	color: #fff;
 	font-size: 1.5rem;
 }
 
+.header-container .main-nav ul {
+  list-style-type: none;
+	padding-left: 0;
+	display: flex;
+}
+
+.header-container .main-nav ul a {
+	display: block;
+  padding: 10px 20px;
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	margin-left: 2rem;
+}
 
 
