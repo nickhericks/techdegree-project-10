@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import {
-	BrowserRouter,
-	Route,
-	Switch,
-	Redirect
-} from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 // Import components
 import Header from './components/Header';
 import Courses from './components/Courses';
+import CourseDetail from './components/CourseDetail';
 import NotFound from './components/NotFound';
+import UserSignIn from "./components/UserSignIn";
+import UserSignUp from "./components/UserSignUp";
+import CreateCourse from "./components/CreateCourse";
+import UpdateCourse from "./components/UpdateCourse";
+import UserSignOut from "./components/UserSignOut";
 
 
 export default class App extends Component {
-
-  // constructor() {
-	// 	super();
-	// 	this.state = {
-	// 		courses: []
-	// 	};
-	// } 
+  constructor() {
+		super();
+		this.state = {
+			signedIn: false,
+			username: '',
+			password: ''
+		};
+	} 
 
 
 	// componentDidMount() {
@@ -36,11 +38,8 @@ export default class App extends Component {
 
 
 	render() {
-		// console.log(this.state.courses);
+		console.log(this.state.signedIn);
 	
-		// const currentCourses = this.state.courses.map( (course, index) => (
-		// 	<li key={index}>{course.title}</li>
-		// ));
 
 		return (
       <BrowserRouter>

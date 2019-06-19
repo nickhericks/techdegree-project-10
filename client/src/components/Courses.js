@@ -62,7 +62,7 @@ export default class Courses extends Component {
           {currentCourses}
 
           <li className="course-card" id="new-course-card">
-            <NavLink to={`/courses/new`}>
+            <NavLink to={`/courses/create`}>
               <div className="new-course-card-title">+ Add New Course</div>
             </NavLink>
           </li>
