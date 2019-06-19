@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from "react-router-dom";
 
 // Import components
 import CourseCard from "./CourseCard";
@@ -44,13 +45,9 @@ export default class Courses extends Component {
 		if (this.state.courses.length > 0) {
 			currentCourses = this.state.courses.map( (course, index) => (
 				<CourseCard
-					// farm={pic.farm}
-					// server={pic.server}
 					id={course.id}
-					// secret={pic.secret}
 					key={index}
 					title={course.title}
-					// description={course.description}
 				/>
 			));
 		} else {
@@ -59,11 +56,18 @@ export default class Courses extends Component {
 		}
 
 		return (
-			<div className="photo-container">
+      <div className="photo-container">
+        {/* Render images */}
+        <ul className="course-list">
+          {currentCourses}
 
-				{/* Render images */}
-				<ul className="course-list">{currentCourses}</ul>
-			</div>
-		);
+          <li className="course-card" id="new-course-card">
+            <NavLink to={`/courses/new`}>
+              <div className="new-course-card-title">+ Add New Course</div>
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    );
 	}
 };

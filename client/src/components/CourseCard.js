@@ -6,7 +6,7 @@ const CourseCard = ({ id, key, title }) => {
     <li className="course-card" key={key}>
       <NavLink to={`/courses/${id}`}>
         <div className="">Course</div>
-        <div className="course-card-title">{title}{id}</div>
+        <div className="course-card-title">{title}</div>
       </NavLink>
     </li>
   );
