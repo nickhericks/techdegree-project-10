@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+
+// components
+import Header from './components/Header';
+
 
 export default class App extends Component {
 
@@ -33,14 +36,12 @@ export default class App extends Component {
 		));
 
 		return (
-			<div className="App">
-				<header className="App-header">
+			<div>
+				<Header />
+				<ul>
+					{ currentCourses }
+				</ul>
 
-					<ul>
-						{ currentCourses }
-					</ul>
-
-				</header>
 			</div>
 		);
 	}
