@@ -67,6 +67,12 @@ router.post('/', [
 	check('description')
 		.exists({ checkNull: true, checkFalsy: true })
 		.withMessage('Please provide a value for "description"'),
+	check('estimatedTime')
+		.optional()
+		.withMessage('Please provide a value for "estimated time"'),
+	check('materials needed')
+		.optional()
+		.withMessage('Please provide a value for "materials needed"'),
 ],
 authenticateUser, asyncHandler( async (req, res) => {
 	// Attempt to get the validation result from the Request object.
@@ -87,7 +93,9 @@ authenticateUser, asyncHandler( async (req, res) => {
 		const addedCourse = await Course.create({
       title: course.title,
       description: course.description,
-      userId: req.currentUser.id
+      userId: req.currentUser.id,
+      estimatedTime: course.estimatedTime,
+      materialsNeeded: course.materialsNeeded
     });
 
 		// get new course id for Location header

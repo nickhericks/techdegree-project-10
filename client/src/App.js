@@ -45,8 +45,6 @@ export default class App extends Component {
       <BrowserRouter>
         <Header />
 
-        <div className="app-container">
-
           <Switch>
             <Route exact path="/" render={() => <Courses />} />
             {/* 						
@@ -68,7 +66,6 @@ export default class App extends Component {
             <Route component={NotFound} />
           </Switch>
 
-        </div>
       </BrowserRouter>
     );
 	}

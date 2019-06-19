@@ -27,8 +27,10 @@ export default class CourseDetail extends Component {
 
     const title = this.state.course.title;
     const description = this.state.course.description;
+    const estimatedTime = this.state.course.estimatedTime;
+    const materialsNeeded = this.state.course.MaterialsNeeded;
 
-		let materials;
+		let materials = materialsNeeded;
 
 		let buttons; 		
 		// If current user is owner, add 'update' and 'delete' buttons
@@ -38,20 +40,28 @@ export default class CourseDetail extends Component {
     return (
       <div>
         <div className="details-subheader">
+					<div className="container">
+					  <div className="subheader-flex">
+							<ul className="details-buttons">
+								{/* if current user is owner, add 'update' and 'delete' buttons */}
+								{buttons}
 
-        <ul className="details-buttons">
-					{/* if current user is owner, add 'update' and 'delete' buttons */}
-					{buttons}
-
-          <li className="button" id="return-btn">
-            <NavLink to={`/`}>
-              <div className="">Return to List</div>
-            </NavLink>
-          </li>
-        </ul>
-
+								<li className="button">
+									<NavLink to={`/`}>
+										<div className="">Delete Course</div>
+									</NavLink>
+								</li>
+								<li className="button" id="return-btn">
+									<NavLink to={`/`}>
+										<div className=""><span id="dark">Return to List</span></div>
+									</NavLink>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
-        <div className="details-page">
+
+        <div className="container details-page">
           <div className="details-main">
             <h4>Course</h4>
             <h1>{title}</h1>
@@ -60,7 +70,7 @@ export default class CourseDetail extends Component {
           </div>
           <div className="details-side">
 						<h5>Estimated Time</h5>
-						<p>14 hours</p>
+						<p>{estimatedTime}</p>
 						<h5>Materials Needed</h5>
 						<ul>
 							{materials}

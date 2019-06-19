@@ -50,14 +50,13 @@ export default class Courses extends Component {
 		}
 
 		return (
-      <div className="photo-container">
-        {/* Render images */}
+      <div className="container">
         <ul className="course-list">
           {currentCourses}
 
           <li className="course-card" id="new-course-card">
             <NavLink to={`/courses/create`}>
-              <div className="new-course-card-title">+ Add New Course</div>
+              <div className="new-course-card-title">Add New Course</div>
             </NavLink>
           </li>
         </ul>
