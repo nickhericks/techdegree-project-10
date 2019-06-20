@@ -268,7 +268,8 @@ form {
 }
 
 
-input[type=text] {
+input[type=text],
+textarea {
   flex-grow: 1;
   border-width: 0 0 1px 0;
   margin: 10px 0;
@@ -282,13 +283,15 @@ input[type=text] {
   outline: none;
 }
 
-input[type=text]::-webkit-input-placeholder{
+input[type=text]::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{
   color: rgb(131, 131, 131);
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-input[type=text]:focus{
+input[type=text]:focus,
+textarea:focus{
   background-color: rgb(235, 235, 235);
 }
 

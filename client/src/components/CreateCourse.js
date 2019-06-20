@@ -5,40 +5,34 @@ export default class CreateCourse extends Component {
   constructor() {
     super();
     this.state = {
-      course: {},
-      user: {}
+
     };
   }
 
-  componentDidMount() {
-    fetch(`http://localhost:5000/api/courses/${this.props.match.params.id}`)
-      .then(response => response.json())
-      .then(responseData => {
-        this.setState({
-          course: responseData.course,
-          user: responseData.course.user
-        });
-        console.log(this.state.course);
-        console.log(this.state.user);
-      })
-      .catch(error => console.log("Error fetching or parsing data", error));
-  }
+	
+
+
+	title = React.createRef();
+	description = React.createRef();
+	time = React.createRef();
+	materials = React.createRef();
+
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(this.emailAddress.current.value);
+		console.log(this.password.current.value);
+		// this.props.addPlayer(this.emailAddress.current.value);
+		e.currentTarget.reset();
+	}
+
+
 
   render() {
-    // console.log(this.state.course);
-    // console.log('Props', this.props);
-    // console.log(this.props.match.params.id);
-
-    const id = this.state.course.id;
-    const title = this.state.course.title;
-    const description = this.state.course.description;
-    const estimatedTime = this.state.course.estimatedTime;
-    const materialsNeeded = this.state.course.materialsNeeded;
-    const firstName = this.state.user.firstName;
-		const lastName = this.state.user.lastName;
+ 
 
 		// TODO: update courseOwner to be currently authenticated user
-    const courseOwner = `${firstName} ${lastName}`;
+    const courseOwner = ``;
 
 
     return (
@@ -58,8 +52,9 @@ export default class CreateCourse extends Component {
               </h1>
               <h4>By {courseOwner}</h4>
               <p className="field-container">
-                <input
-                  type="text"
+                <textarea 
+									id="description"
+									rows="10"
                   ref={this.description}
                   placeholder="Course description..."
                 />
@@ -68,7 +63,10 @@ export default class CreateCourse extends Component {
             <div className="page-right">
               <h5>Estimated Time</h5>
               <p className="field-container" id="time">
-                <input type="text" ref={this.time} placeholder="Hours" />
+                <input 
+									type="text" 
+									ref={this.time} 
+									placeholder="Hours" />
               </p>
               <h5>Materials Needed</h5>
               <p className="field-container" id="materials">
