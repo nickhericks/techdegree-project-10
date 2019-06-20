@@ -9,7 +9,7 @@ import NotFound from './components/NotFound';
 import UserSignIn from "./components/UserSignIn";
 import UserSignUp from "./components/UserSignUp";
 import CreateCourse from "./components/CreateCourse";
-// import UpdateCourse from "./components/UpdateCourse";
+import UpdateCourse from "./components/UpdateCourse";
 // import UserSignOut from "./components/UserSignOut";
 
 
@@ -46,33 +46,27 @@ export default class App extends Component {
         <Header />
 
         <Switch>
+          {/* List of courses */}
           <Route exact path="/" render={() => <Courses />} />
-          {/* 						
-						<Route exact path="/dogs" render={ () =>
-							(this.state.loading) 
-							? <p>Loading...</p>
-							: <Gallery pictures={this.state.dogResults} query='dogs' />
-						} />
-						<Route exact path="/sunset" render={ () =>
-							(this.state.loading) 
-							? <p>Loading...</p>
-							: <Gallery pictures={this.state.sunsetResults} query='sunset' />
-						} /> */}
 
-          {/* Route for course details */}
+          {/* Create course */}
           <Route exact path="/courses/create" component={CreateCourse} />
 
-          {/* Route for course details */}
+          {/* Course details page */}
           <Route exact path="/courses/:id" component={CourseDetail} />
 
-          {/* Route for user sign in */}
+          {/* Course details page */}
+          <Route exact path="/courses/:id/update" component={UpdateCourse} />
+
+          {/* User sign in */}
           <Route exact path="/signin" component={UserSignIn} />
 
-          {/* Route for user sign up */}
+          {/* User sign up */}
           <Route exact path="/signup" component={UserSignUp} />
 
           {/* Route for 404 error */}
           <Route component={NotFound} />
+
         </Switch>
       </BrowserRouter>
     );

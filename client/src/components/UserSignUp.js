@@ -33,23 +33,34 @@ export default class UserSignUp extends Component {
           <div className="field-container">
             <input
               type="text"
+              ref={this.firstName}
+              placeholder="First Name"
+            />
+            <input
+              type="text"
+              ref={this.lastName}
+              placeholder="Last Name"
+            />
+            <input
+              type="text"
               ref={this.emailAddress}
-              // value={ this.state.value }
-              // onChange={ this.handleValueChange }
               placeholder="Email Address"
             />
             <input
               type="text"
               ref={this.password}
-              // value={ this.state.value }
-              // onChange={ this.handleValueChange }
               placeholder="Password"
+            />
+            <input
+              type="text"
+              ref={this.passwordConf}
+              placeholder="Confirm Password"
             />
           </div>
 
           <ul className="button-list">
             <li className="button primary">
-              <input type="submit" value="Sign In" />
+              <input type="submit" value="Sign Up" />
             </li>
             <li className="button secondary">
               <NavLink to={`/`}>
