@@ -30,6 +30,7 @@ export default class CourseDetail extends Component {
     // console.log('Props', this.props);
     // console.log(this.props.match.params.id);
 
+    const id = this.state.course.id;
     const title = this.state.course.title;
     const description = this.state.course.description;
     const estimatedTime = this.state.course.estimatedTime;
@@ -56,6 +57,11 @@ export default class CourseDetail extends Component {
                 {/* if current user is owner, add 'update' and 'delete' buttons */}
                 {buttons}
 
+                <li className="button primary">
+                  <NavLink to={`/courses/${id}/update`}>
+                    <div className="button-text">Update Course</div>
+                  </NavLink>
+                </li>
                 <li className="button primary">
                   <NavLink to={`/`}>
                     <div className="button-text">Delete Course</div>
