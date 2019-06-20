@@ -40,42 +40,42 @@ export default class CourseDetail extends Component {
     return (
       <div>
         <div className="details-subheader">
-					<div className="container">
-					  <div className="subheader-flex">
-							<ul className="details-buttons">
-								{/* if current user is owner, add 'update' and 'delete' buttons */}
-								{buttons}
+          <div className="container">
+            <div className="subheader-flex">
+              <ul className="details-buttons">
+                {/* if current user is owner, add 'update' and 'delete' buttons */}
+                {buttons}
 
-								<li className="button">
-									<NavLink to={`/`}>
-										<div className="">Delete Course</div>
-									</NavLink>
-								</li>
-								<li className="button" id="return-btn">
-									<NavLink to={`/`}>
-										<div className=""><span id="dark">Return to List</span></div>
-									</NavLink>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+                <li className="button">
+                  <NavLink to={`/`}>
+                    <div className="">Delete Course</div>
+                  </NavLink>
+                </li>
+                <li className="button" id="return-btn">
+                  <NavLink to={`/`}>
+                    <div className="">
+                      <span id="dark">Return to List</span>
+                    </div>
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
         <div className="container details-page">
           <div className="details-main">
             <h4>Course</h4>
             <h1>{title}</h1>
-						{/* <h4>{this.state.course.user.firstName}</h4> */}
-						<p>{description}</p>
+            {/* <h4>{this.state.course.user.firstName}</h4> */}
+            <p>{description}</p>
           </div>
           <div className="details-side">
-						<h5>Estimated Time</h5>
-						<p>{estimatedTime}</p>
-						<h5>Materials Needed</h5>
-						<ul>
-							{materials}
-						</ul>
-					</div>
+            <h5>Estimated Time</h5>
+            <p id="time">{estimatedTime}</p>
+            <h5>Materials Needed</h5>
+            <ul id="materials">{materials}</ul>
+          </div>
         </div>
       </div>
     );
