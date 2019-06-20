@@ -62,7 +62,7 @@ export default class UserSignIn extends Component {
         <p>
           Don't have a user account?{" "}
           <span>
-            <NavLink to={`/`}>
+            <NavLink to={`/signup`}>
               <span>Click here</span>
             </NavLink>
           </span>{" "}

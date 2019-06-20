@@ -7,7 +7,7 @@ import Courses from './components/Courses';
 import CourseDetail from './components/CourseDetail';
 import NotFound from './components/NotFound';
 import UserSignIn from "./components/UserSignIn";
-// import UserSignUp from "./components/UserSignUp";
+import UserSignUp from "./components/UserSignUp";
 import CreateCourse from "./components/CreateCourse";
 // import UpdateCourse from "./components/UpdateCourse";
 // import UserSignOut from "./components/UserSignOut";
@@ -67,6 +67,9 @@ export default class App extends Component {
 
           {/* Route for user sign in */}
           <Route exact path="/signin" component={UserSignIn} />
+
+          {/* Route for user sign up */}
+          <Route exact path="/signup" component={UserSignUp} />
 
           {/* Route for 404 error */}
           <Route component={NotFound} />
