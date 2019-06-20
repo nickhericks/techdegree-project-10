@@ -35,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
 		// define association between tables
 		// a "course" belongs to a single "user"
 		Course.belongsTo(models.User, {
+			as: 'user',
 			foreignKey: {
 				fieldName: 'userId',
 				allowNull: false

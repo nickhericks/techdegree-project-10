@@ -25,14 +25,15 @@ function asyncHandler(cb) {
 // Returns a list of courses (including the user that owns each course)
 router.get('/', asyncHandler( async (req, res) => {
 	const courses = await Course.findAll({
-		attributes: ["id", "title", "description", "userId"],
-		include: [
-			{
-				model: User,
-				attributes: ["id", "firstName", "lastName", "emailAddress",]
-			}
-		]
-	});
+    attributes: ["id", "title", "description", "userId"],
+    include: [
+      {
+        model: User,
+        as: "user",
+        attributes: ["id", "firstName", "lastName", "emailAddress"]
+      }
+    ]
+  });
 	res.json({ courses });
 }));
 
@@ -44,7 +45,8 @@ router.get('/:id', asyncHandler( async (req, res) => {
     attributes: ["id", "title", "description", "userId", "estimatedTime", "materialsNeeded"],
     include: [
       {
-        model: User,
+				model: User,
+				as: 'user',
         attributes: ["id", "firstName", "lastName", "emailAddress"]
       }
     ]
