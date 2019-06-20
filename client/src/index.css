@@ -225,6 +225,10 @@ li.course-card {
 	margin-top: 2rem;
 }
 
+.no-subheader {
+	margin-top: 2.9rem;
+}
+
 .page-left {
 	flex-basis: 65%;
 }
@@ -244,7 +248,7 @@ p#time {
 	font-weight: bold;
 }
 
-ul#materials {
+p#materials {
 
 }
 

@@ -93,7 +93,7 @@ export default class CourseDetail extends Component {
             <h5>Estimated Time</h5>
             <p id="time">{estimatedTime}</p>
             <h5>Materials Needed</h5>
-            <ul id="materials">{materialsNeeded}</ul>
+            <p id="materials">{materialsNeeded}</p>
           </div>
         </div>
 

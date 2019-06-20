@@ -32,15 +32,11 @@ export default class UserSignIn extends Component {
             <input
               type="text"
               ref={this.emailAddress}
-              // value={ this.state.value }
-              // onChange={ this.handleValueChange }
               placeholder="Email Address"
             />
             <input
               type="text"
               ref={this.password}
-              // value={ this.state.value }
-              // onChange={ this.handleValueChange }
               placeholder="Password"
             />
           </div>
