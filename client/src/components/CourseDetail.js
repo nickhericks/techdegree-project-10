@@ -50,23 +50,27 @@ export default class CourseDetail extends Component {
         <div className="details-subheader">
           <div className="container">
             <div className="subheader-flex">
-              <ul className="details-buttons">
+
+
+              <ul className="button-list">
                 {/* if current user is owner, add 'update' and 'delete' buttons */}
                 {buttons}
 
-                <li className="button">
+                <li className="button primary">
                   <NavLink to={`/`}>
                     <div className="button-text">Delete Course</div>
                   </NavLink>
                 </li>
-                <li className="button" id="return-btn">
+                <li className="button secondary">
                   <NavLink to={`/`}>
                     <div className="button-text">
-                      <span id="dark">Return to List</span>
+                      <span className="blue">Return to List</span>
                     </div>
                   </NavLink>
                 </li>
               </ul>
+
+
             </div>
           </div>
         </div>

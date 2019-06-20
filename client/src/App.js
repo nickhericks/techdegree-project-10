@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Import components
 import Header from './components/Header';
@@ -7,10 +7,10 @@ import Courses from './components/Courses';
 import CourseDetail from './components/CourseDetail';
 import NotFound from './components/NotFound';
 import UserSignIn from "./components/UserSignIn";
-import UserSignUp from "./components/UserSignUp";
+// import UserSignUp from "./components/UserSignUp";
 import CreateCourse from "./components/CreateCourse";
-import UpdateCourse from "./components/UpdateCourse";
-import UserSignOut from "./components/UserSignOut";
+// import UpdateCourse from "./components/UpdateCourse";
+// import UserSignOut from "./components/UserSignOut";
 
 
 export default class App extends Component {
@@ -38,16 +38,16 @@ export default class App extends Component {
 
 
 	render() {
-		console.log(this.state.signedIn);
+		// console.log(this.state.signedIn);
 	
 
 		return (
       <BrowserRouter>
         <Header />
 
-          <Switch>
-            <Route exact path="/" render={() => <Courses />} />
-            {/* 						
+        <Switch>
+          <Route exact path="/" render={() => <Courses />} />
+          {/* 						
 						<Route exact path="/dogs" render={ () =>
 							(this.state.loading) 
 							? <p>Loading...</p>
@@ -59,13 +59,18 @@ export default class App extends Component {
 							: <Gallery pictures={this.state.sunsetResults} query='sunset' />
 						} /> */}
 
-            {/* Route for course details */}
-            <Route exact path="/courses/:id" component={CourseDetail} />
+          {/* Route for course details */}
+          <Route exact path="/courses/create" component={CreateCourse} />
 
-            {/* Route for 404 error */}
-            <Route component={NotFound} />
-          </Switch>
+          {/* Route for course details */}
+          <Route exact path="/courses/:id" component={CourseDetail} />
 
+          {/* Route for user sign in */}
+          <Route exact path="/signin" component={UserSignIn} />
+
+          {/* Route for 404 error */}
+          <Route component={NotFound} />
+        </Switch>
       </BrowserRouter>
     );
 	}

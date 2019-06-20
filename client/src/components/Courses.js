@@ -23,7 +23,7 @@ export default class Courses extends Component {
 		.then(response => response.json())
 		.then(responseData => {
 			this.setState({ courses: responseData.courses });
-			console.log(this.state.courses);
+			// console.log(this.state.courses);
 		})
 		.catch(error =>
 			console.log("Error fetching or parsing data", error)	
