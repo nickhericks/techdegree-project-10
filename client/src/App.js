@@ -60,7 +60,7 @@ export default class App extends Component {
 						} /> */}
 
             {/* Route for course details */}
-            <Route path="/courses/:id" component={CourseDetail} />
+            <Route exact path="/courses/:id" component={CourseDetail} />
 
             {/* Route for 404 error */}
             <Route component={NotFound} />

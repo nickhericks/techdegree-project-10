@@ -48,12 +48,12 @@ export default class CourseDetail extends Component {
 
                 <li className="button">
                   <NavLink to={`/`}>
-                    <div className="">Delete Course</div>
+                    <div className="button-text">Delete Course</div>
                   </NavLink>
                 </li>
                 <li className="button" id="return-btn">
                   <NavLink to={`/`}>
-                    <div className="">
+                    <div className="button-text">
                       <span id="dark">Return to List</span>
                     </div>
                   </NavLink>
