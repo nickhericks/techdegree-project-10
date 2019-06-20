@@ -11,18 +11,23 @@ export default class CreateCourse extends Component {
 
 	
 
-
 	title = React.createRef();
 	description = React.createRef();
 	time = React.createRef();
 	materials = React.createRef();
 
+	
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.emailAddress.current.value);
-		console.log(this.password.current.value);
+		console.log(this.title.current.value);
+		console.log(this.description.current.value);
+		console.log(this.time.current.value);
+		console.log(this.materials.current.value);
 		// this.props.addPlayer(this.emailAddress.current.value);
+		
+		// TODO: Make POST request with data to REST API
+		
 		e.currentTarget.reset();
 	}
 
@@ -45,6 +50,7 @@ export default class CreateCourse extends Component {
               <h4>Course</h4>
               <h1 className="field-container">
                 <input
+									className="title"
                   type="text"
                   ref={this.title}
                   placeholder="Course title..."
@@ -62,14 +68,14 @@ export default class CreateCourse extends Component {
             </div>
             <div className="page-right">
               <h5>Estimated Time</h5>
-              <p className="field-container" id="time">
+              <p className="field-container">
                 <input 
 									type="text" 
 									ref={this.time} 
 									placeholder="Hours" />
               </p>
               <h5>Materials Needed</h5>
-              <p className="field-container" id="materials">
+              <p className="field-container">
                 <input
                   type="text"
                   ref={this.materials}

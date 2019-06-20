@@ -244,11 +244,11 @@ li.course-card {
 	font-size: .75rem;
 }
 
-p#time {
+.time {
 	font-weight: bold;
 }
 
-p#materials {
+.materials {
 
 }
 

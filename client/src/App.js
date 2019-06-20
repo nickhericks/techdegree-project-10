@@ -46,22 +46,22 @@ export default class App extends Component {
         <Header />
 
         <Switch>
-          {/* List of courses */}
+          {/* View list of courses page */}
           <Route exact path="/" render={() => <Courses />} />
 
-          {/* Create course */}
+          {/* Create course page */}
           <Route exact path="/courses/create" component={CreateCourse} />
 
-          {/* Course details page */}
+          {/* View course details page */}
           <Route exact path="/courses/:id" component={CourseDetail} />
 
-          {/* Course details page */}
+          {/* Update course page */}
           <Route exact path="/courses/:id/update" component={UpdateCourse} />
 
-          {/* User sign in */}
+          {/* User sign in page */}
           <Route exact path="/signin" component={UserSignIn} />
 
-          {/* User sign up */}
+          {/* User sign up page */}
           <Route exact path="/signup" component={UserSignUp} />
 
           {/* Route for 404 error */}
