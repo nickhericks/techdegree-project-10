@@ -81,20 +81,24 @@ export default class CourseDetail extends Component {
           </div>
         </div>
 
-        <div className="container details-page">
-          <div className="details-main">
+
+        <div className="container page-main">
+          <div className="page-left">
             <h4>Course</h4>
             <h1>{title}</h1>
             <h4>By {courseOwner}</h4>
             <p>{description}</p>
           </div>
-          <div className="details-side">
+          <div className="page-right">
             <h5>Estimated Time</h5>
             <p id="time">{estimatedTime}</p>
             <h5>Materials Needed</h5>
             <ul id="materials">{materialsNeeded}</ul>
           </div>
         </div>
+
+
+
       </div>
     );
   }
