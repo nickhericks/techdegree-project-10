@@ -16,7 +16,7 @@ export default class CreateCourse extends Component {
 	time = React.createRef();
 	materials = React.createRef();
 
-	
+
 
 	handleSubmit = (e) => {
 		e.preventDefault();
@@ -60,7 +60,7 @@ export default class CreateCourse extends Component {
               <p className="field-container">
                 <textarea 
 									id="description"
-									rows="10"
+									rows="12"
                   ref={this.description}
                   placeholder="Course description..."
                 />
@@ -76,8 +76,8 @@ export default class CreateCourse extends Component {
               </p>
               <h5>Materials Needed</h5>
               <p className="field-container">
-                <input
-                  type="text"
+                <textarea
+                  rows="9"
                   ref={this.materials}
                   placeholder="List materials..."
                 />

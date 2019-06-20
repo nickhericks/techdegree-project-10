@@ -77,6 +77,10 @@ ul {
 	padding-left: 0;
 }
 
+textarea {
+	resize: vertical; 
+}
+
 .blue {
 	color: #226399;
 }
@@ -258,15 +262,10 @@ li.course-card {
 	margin: 5rem auto;
 }
 
-form {
-
-}
-
 .field-container {
 	display: flex;
 	flex-direction: column;
 }
-
 
 input[type=text],
 textarea {
@@ -277,7 +276,8 @@ textarea {
   border-radius: 5px;
   background-color: rgb(255, 255, 255);
   border: 1px solid grey;
-  font-weight: bold;
+	/* font-weight: bold; */
+	font-size: 1rem;
   color: rgb(65, 65, 65);
   letter-spacing: 1px;
   outline: none;
