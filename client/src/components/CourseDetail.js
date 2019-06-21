@@ -30,6 +30,7 @@ export default class CourseDetail extends Component {
 	handleDeleteCourse = () => {
 		console.log(`About to delete course #${this.props.match.params.id}`);
 
+		
 
 	}
 
@@ -71,9 +72,9 @@ export default class CourseDetail extends Component {
                   </Link>
                 </li>
                 <li className="button primary">
-                  <Link to={`/`}>
+                  <button onClick={this.handleDeleteCourse} className="primary">
                     <div className="button-text">Delete Course</div>
-                  </Link>
+                  </button>
                 </li>
                 <li className="button secondary">
                   <Link to={`/`}>
