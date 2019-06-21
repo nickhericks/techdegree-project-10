@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Import components
 import CourseCard from "./CourseCard";
@@ -55,9 +55,9 @@ export default class Courses extends Component {
           {currentCourses}
 
           <li className="course-card" id="new-course-card">
-            <NavLink to={`/courses/create`}>
+            <Link to={`/courses/create`}>
               <div className="new-course-card-title">Add New Course</div>
-            </NavLink>
+            </Link>
           </li>
         </ul>
       </div>

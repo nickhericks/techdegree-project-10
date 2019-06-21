@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 export default class CourseDetail extends Component {
@@ -58,21 +58,21 @@ export default class CourseDetail extends Component {
                 {buttons}
 
                 <li className="button primary">
-                  <NavLink to={`/courses/${id}/update`}>
+                  <Link to={`/courses/${id}/update`}>
                     <div className="button-text">Update Course</div>
-                  </NavLink>
+                  </Link>
                 </li>
                 <li className="button primary">
-                  <NavLink to={`/`}>
+                  <Link to={`/`}>
                     <div className="button-text">Delete Course</div>
-                  </NavLink>
+                  </Link>
                 </li>
                 <li className="button secondary">
-                  <NavLink to={`/`}>
+                  <Link to={`/`}>
                     <div className="button-text">
                       <span className="blue">Return to List</span>
                     </div>
-                  </NavLink>
+                  </Link>
                 </li>
               </ul>
 

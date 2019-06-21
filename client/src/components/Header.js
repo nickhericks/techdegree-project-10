@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // import PropTypes from "prop-types";
 
@@ -13,10 +13,10 @@ const Header = (props) => {
 				<nav className="main-nav">
 					<ul>
 						<li>
-							<NavLink to="/signup">Sign Up</NavLink>
+							<Link to="/signup">Sign Up</Link>
 						</li>
 						<li>
-							<NavLink to="/signin">Sign In</NavLink>
+							<Link to="/signin">Sign In</Link>
 						</li>
 					</ul>
 				</nav>

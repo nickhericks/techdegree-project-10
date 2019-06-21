@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import PropTypes from "prop-types";
 
 export default class UserSignIn extends Component {
@@ -46,11 +46,11 @@ export default class UserSignIn extends Component {
                 <input type="submit" value="Sign In" />
             </li>
             <li className="button secondary">
-              <NavLink to={`/`}>
+              <Link to={`/`}>
                 <div className="button-text">
                   <span className="blue">Cancel</span>
                 </div>
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </form>
@@ -58,9 +58,9 @@ export default class UserSignIn extends Component {
         <p>
           Don't have a user account?{" "}
           <span>
-            <NavLink to={`/signup`}>
+            <Link to={`/signup`}>
               <span>Click here</span>
-            </NavLink>
+            </Link>
           </span>{" "}
           to sign up!
         </p>

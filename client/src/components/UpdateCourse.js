@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class UpdateCourse extends Component {
   constructor() {
@@ -106,11 +106,11 @@ export default class UpdateCourse extends Component {
               <input type="submit" value="Update Course" />
             </li>
             <li className="button secondary">
-              <NavLink to={`/`}>
+              <Link to={`/`}>
                 <div className="button-text">
                   <span className="blue">Cancel</span>
                 </div>
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </form>
