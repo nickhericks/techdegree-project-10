@@ -15,4 +15,4 @@ const UnhandledError = () => {
   );
 };
 
-export default NotFound;
+export default UnhandledError;

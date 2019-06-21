@@ -15,4 +15,4 @@ const Forbidden = () => {
   );
 };
 
-export default NotFound;
+export default Forbidden;
