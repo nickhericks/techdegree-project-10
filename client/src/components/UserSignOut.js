@@ -6,6 +6,10 @@ const UserSignOut = props => {
 
 	console.log(`Signing out`);
 
+	// TODO: sign out authenticated user when route is requested from Header component
+
+	
+
 
 
   return (
