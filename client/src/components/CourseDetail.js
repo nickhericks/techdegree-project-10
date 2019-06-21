@@ -9,7 +9,9 @@ export default class CourseDetail extends Component {
 			course: {},
 			user: {}
     };
-  }
+	}
+	
+	
 
   componentDidMount() {
     fetch(`http://localhost:5000/api/courses/${this.props.match.params.id}`)
@@ -23,7 +25,13 @@ export default class CourseDetail extends Component {
         console.log(this.state.user);
       })
       .catch(error => console.log("Error fetching or parsing data", error));
-  }
+	}
+	
+	handleDeleteCourse = () => {
+		console.log(`About to delete course #${this.props.match.params.id}`);
+
+
+	}
 
   render() {
     // console.log(this.state.course);
