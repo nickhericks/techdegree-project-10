@@ -18,6 +18,11 @@ export class Provider extends Component {
 	} 
 
 	handleSignIn = (clientUsername, clientPassword, props) => {
+
+		// TODO: Add fetch request, with a .then statement if user exists, .catch if not
+
+
+
 		console.log(`Signing user IN`);
 		this.setState({
 			signedIn: true,
