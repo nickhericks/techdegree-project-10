@@ -24,8 +24,8 @@ function asyncHandler(cb) {
 // GET /api/users 200
 // return the currently authenticated user
 router.get("/", authenticateUser, (req, res) => {
-  const { firstName, lastName, emailAddress } = req.currentUser;
-  res.json({ firstName, lastName, emailAddress });
+  const { id, firstName, lastName, emailAddress } = req.currentUser;
+  res.json({ id, firstName, lastName, emailAddress });
 });
 
 
