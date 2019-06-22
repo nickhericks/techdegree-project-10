@@ -35,22 +35,8 @@ export default class App extends Component {
 	// 	);
 	// }
 
-	handleSignIn = () => {
-		console.log(`About to sign in`);
-
-
-	}
-
-
-	handleSignOut = () => {
-		console.log(`handleSignOut is running successfully!`);
-
-	}
-
-
 
 	render() {
-		// console.log(this.state.signedIn);
 	
 		return (
 			<BrowserRouter>

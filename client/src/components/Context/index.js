@@ -26,6 +26,14 @@ export class Provider extends Component {
 
 
   render() {
+
+
+		console.log(`CONTEXT STATE`);
+		console.log(`User signed in: ${this.state.signedIn}`);
+		console.log(`Username: ${this.state.username}`);
+		console.log(`Password: ${this.state.password}`);
+
+
     return (
       <CoursesContext.Provider value={{
 				username: this.state.username,
