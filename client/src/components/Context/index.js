@@ -59,7 +59,7 @@ export class Provider extends Component {
 		history.push('/');
 	}
 
-	
+
 	handleSignOut = () => {
 		console.log(`Signing user OUT`);
 		this.setState({
@@ -74,12 +74,11 @@ export class Provider extends Component {
 
   render() {
 
-
 		console.log(`CONTEXT STATE`);
 		console.log(`SIGNED IN: ${this.state.signedIn}`);
 		console.log(`USERNAME: ${this.state.username}`);
 		console.log(`PASSWORD: ${this.state.password}`);
-		console.log(`NAME: ${this.state.name}`);
+		console.log(`FULL NAME: ${this.state.name}`);
 		console.log(`USER ID: ${this.state.userId}`);
 
 
