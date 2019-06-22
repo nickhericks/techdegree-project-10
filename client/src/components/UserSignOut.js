@@ -6,12 +6,12 @@ const AddPlayerForm = () => {
 
   return (
     <Consumer>
-      {value => {
+      { ({ actions }) => {
 
-				console.log(value);
+				console.log(actions);
 				
 				{/* Run handleSignOut method from Provider in Context/index.js file */}
-				value.actions.signOut();
+				actions.signOut();
 
         return (
           <React.Fragment>
