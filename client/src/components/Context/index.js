@@ -16,12 +16,22 @@ export class Provider extends Component {
 		};
 	} 
 
-	handleSignIn = () => {
-		console.log(`handleSignIn is running`);
+	handleSignIn = (clientUsername, clientPassword) => {
+		console.log(`Signing user IN`);
+		this.setState({
+			username: clientUsername,
+			password: clientPassword,
+			signedIn: true
+		});
 	}
 
 	handleSignOut = () => {
-		console.log(`handleSignOut is running!`);
+		console.log(`Signing user OUT`);
+		this.setState({
+			username: '',
+			password: '',
+			signedIn: false
+		});
 	}
 
 
@@ -39,7 +49,6 @@ export class Provider extends Component {
 				username: this.state.username,
 				password: this.state.password,
 				actions: {
-					addPlayer: this.handleAddPlayer,
 					signIn: this.handleSignIn,
 					signOut: this.handleSignOut
 				}

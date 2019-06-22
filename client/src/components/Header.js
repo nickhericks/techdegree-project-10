@@ -29,6 +29,9 @@ const Header = (props) => {
 						<li>
 							<Link to="/signin">Sign In</Link>
 						</li>
+						<li>
+							<Link to="/signout">Sign Out</Link>
+						</li>
 					</ul>
 				</nav>
 			</div>
