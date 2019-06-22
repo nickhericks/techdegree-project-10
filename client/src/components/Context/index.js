@@ -17,7 +17,7 @@ export class Provider extends Component {
 		};
 	} 
 
-	handleSignIn = (clientUsername, clientPassword) => {
+	handleSignIn = (clientUsername, clientPassword, props) => {
 		console.log(`Signing user IN`);
 		this.setState({
 			signedIn: true,
@@ -26,6 +26,10 @@ export class Provider extends Component {
 			// TODO: add user data from response object after checking database for authorized user
 			user: '___________'
 		});
+		// Send user back to previous page upon successful login
+		const { history, location } = props;
+		// const path = location.state ? location.state.prevLocation : '/';
+		history.push('/');
 	}
 
 	handleSignOut = () => {

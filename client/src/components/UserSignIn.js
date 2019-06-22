@@ -23,7 +23,8 @@ export default class UserSignIn extends Component {
 						console.log(this.password.current.value);
 						actions.signIn(
               this.emailAddress.current.value,
-              this.password.current.value
+              this.password.current.value,
+							this.props
             );
 						e.currentTarget.reset();
 					};

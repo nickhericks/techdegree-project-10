@@ -16,12 +16,10 @@ const Header = () => {
           : 'Sign Up';
 				let textTwo = signedIn ? 'Sign Out' : 'Sign In';
 
-
         return (
           <header>
             <div className="container header-container">
               <h1>Courses</h1>
-
               <nav className="main-nav">
                 <ul>
                   <li>
