@@ -12,25 +12,29 @@ export class Provider extends Component {
 		this.state = {
 			signedIn: false,
 			username: '',
-			password: ''
+			password: '',
+			user: ''
 		};
 	} 
 
 	handleSignIn = (clientUsername, clientPassword) => {
 		console.log(`Signing user IN`);
 		this.setState({
+			signedIn: true,
 			username: clientUsername,
 			password: clientPassword,
-			signedIn: true
+			// TODO: add user data from response object after checking database for authorized user
+			user: '___________'
 		});
 	}
 
 	handleSignOut = () => {
 		console.log(`Signing user OUT`);
 		this.setState({
+			signedIn: false,
 			username: '',
 			password: '',
-			signedIn: false
+			user: ''
 		});
 	}
 
@@ -39,15 +43,18 @@ export class Provider extends Component {
 
 
 		console.log(`CONTEXT STATE`);
-		console.log(`User signed in: ${this.state.signedIn}`);
-		console.log(`Username: ${this.state.username}`);
-		console.log(`Password: ${this.state.password}`);
+		console.log(`SIGNED IN: ${this.state.signedIn}`);
+		console.log(`USERNAME: ${this.state.username}`);
+		console.log(`PASSWORD: ${this.state.password}`);
+		console.log(`USER: ${this.state.user}`);
 
 
     return (
       <CoursesContext.Provider value={{
+				signedIn: this.state.signedIn,
 				username: this.state.username,
 				password: this.state.password,
+				user: this.state.user,
 				actions: {
 					signIn: this.handleSignIn,
 					signOut: this.handleSignOut

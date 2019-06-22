@@ -21,7 +21,6 @@ export default class UserSignIn extends Component {
 						e.preventDefault();
 						console.log(this.emailAddress.current.value);
 						console.log(this.password.current.value);
-						// this.props.addPlayer(this.emailAddress.current.value);
 						actions.signIn(
               this.emailAddress.current.value,
               this.password.current.value

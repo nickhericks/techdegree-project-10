@@ -1,43 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Consumer } from "./Context";
 
 
-const Header = (props) => {
-
-
-
-	// TODO: Add conditional to return different content below depending on if user is signed in or not
-	
-	// If signed in, display name and 'sign out' link
-
-	// If not signed in, display 'sign up' and 'sign in' links
-
-
-
+const Header = () => {
 
   return (
-    <header>
-			<div className="container header-container">
+    <Consumer>
+      { ({ signedIn, user }) => {
 
-				<h1>Courses</h1>
+				let linkOne = signedIn ? '' : '/signup';
+				let linkTwo = signedIn ? '/signout' : '/signin';
+				let textOne = signedIn
+          ? `Welcome, ${user.firstName} ${user.lastName}!`
+          : 'Sign Up';
+				let textTwo = signedIn ? 'Sign Out' : 'Sign In';
 
-				<nav className="main-nav">
-					<ul>
-						<li>
-							<Link to="/signup">Sign Up</Link>
-						</li>
-						<li>
-							<Link to="/signin">Sign In</Link>
-						</li>
-						<li>
-							<Link to="/signout">Sign Out</Link>
-						</li>
-					</ul>
-				</nav>
-			</div>
-    </header>
+
+        return (
+          <header>
+            <div className="container header-container">
+              <h1>Courses</h1>
+
+              <nav className="main-nav">
+                <ul>
+                  <li>
+                    <Link to={linkOne}>{textOne}</Link>
+                  </li>
+                  <li>
+                    <Link to={linkTwo}>{textTwo}</Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </header>
+        );
+      }}
+    </Consumer>
   );
 };
-
 
 export default Header;
