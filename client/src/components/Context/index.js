@@ -50,9 +50,8 @@ export class Provider extends Component {
 			.catch(error => {
 				console.log("No matching user", error);
 				alert("No matching user", error);
-			}
-
-			);
+				// TODO: update error handler here?
+			});
 			
 		// Send user back to previous page upon successful login
 		const { history, location } = props;
@@ -60,6 +59,7 @@ export class Provider extends Component {
 		history.push('/');
 	}
 
+	
 	handleSignOut = () => {
 		console.log(`Signing user OUT`);
 		this.setState({
