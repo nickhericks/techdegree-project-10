@@ -25,16 +25,6 @@ app.use(morgan('dev'));
 // and also that it should be made available in the req.body
 app.use(express.json());
 
-// allow CORS for cross-origin resource sharing
-// provides additional headers to allow requests from other servers
-// allows request origin to come from "*" (all/any server)
-// app.use(function(req, res, next) {
-// 	res.header('Access-Control-Allow-Origin', '*');
-// 	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-// 	next();
-// });
-
-
 
 // routes
 app.use('/api/users', userRoutes);
