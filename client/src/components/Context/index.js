@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 const CoursesContext = React.createContext();
 
 // export const Provider = CoursesContext.Provider;
@@ -20,6 +21,15 @@ export class Provider extends Component {
 	handleSignIn = (clientUsername, clientPassword, props) => {
 
 		// TODO: Add fetch request, with a .then statement if user exists, .catch if not
+
+		const options = {
+			method: 
+		}
+
+		fetch
+
+
+
 
 
 
