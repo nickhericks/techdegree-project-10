@@ -22,13 +22,18 @@ export class Provider extends Component {
 
 		// TODO: Add fetch request, with a .then statement if user exists, .catch if not
 
-		const options = {
-			method: 
-		}
+		// console.log(clientUsername);
+		// console.log(clientPassword);
 
-		fetch
-
-
+		axios({
+			method: 'get',
+			url: 'http://localhost:5000/api/users',
+			auth: {
+				username: clientUsername,
+				password: clientPassword
+			}
+		});
+			
 
 
 
