@@ -14,7 +14,8 @@ export class Provider extends Component {
 			signedIn: false,
 			username: '',
 			password: '',
-			user: ''
+			name: '',
+			userId: null
 		};
 	} 
 
@@ -28,24 +29,31 @@ export class Provider extends Component {
 		axios({
 			method: 'get',
 			url: 'http://localhost:5000/api/users',
+			responseType: 'json',
 			auth: {
 				username: clientUsername,
 				password: clientPassword
 			}
-		});
+		})
+			.then( response => {
+				console.log(response.data);
+				let name = `${response.data.firstName} ${response.data.lastName}`;
+				console.log(name);
+				this.setState({
+          signedIn: true,
+          username: response.data.emailAddress,
+          password: clientPassword,
+					name: name,
+					userId: response.data.id
+        });
+			})
+			.catch(error => {
+				console.log("No matching user", error);
+				alert("No matching user", error);
+			}
+
+			);
 			
-
-
-
-
-		console.log(`Signing user IN`);
-		this.setState({
-			signedIn: true,
-			username: clientUsername,
-			password: clientPassword,
-			// TODO: add user data from response object after checking database for authorized user
-			user: '___________'
-		});
 		// Send user back to previous page upon successful login
 		const { history, location } = props;
 		// const path = location.state ? location.state.prevLocation : '/';
@@ -55,11 +63,12 @@ export class Provider extends Component {
 	handleSignOut = () => {
 		console.log(`Signing user OUT`);
 		this.setState({
-			signedIn: false,
-			username: '',
-			password: '',
-			user: ''
-		});
+      signedIn: false,
+      username: "",
+      password: "",
+			name: "",
+			userId: null
+    });
 	}
 
 
@@ -70,21 +79,25 @@ export class Provider extends Component {
 		console.log(`SIGNED IN: ${this.state.signedIn}`);
 		console.log(`USERNAME: ${this.state.username}`);
 		console.log(`PASSWORD: ${this.state.password}`);
-		console.log(`USER: ${this.state.user}`);
+		console.log(`NAME: ${this.state.name}`);
+		console.log(`USER ID: ${this.state.userId}`);
 
 
     return (
-      <CoursesContext.Provider value={{
-				signedIn: this.state.signedIn,
-				username: this.state.username,
-				password: this.state.password,
-				user: this.state.user,
-				actions: {
-					signIn: this.handleSignIn,
-					signOut: this.handleSignOut
-				}
-      }}>
-        { this.props.children }
+      <CoursesContext.Provider
+        value={{
+          signedIn: this.state.signedIn,
+          username: this.state.username,
+          password: this.state.password,
+          name: this.state.name,
+          userId: this.state.userId,
+          actions: {
+            signIn: this.handleSignIn,
+            signOut: this.handleSignOut
+          }
+        }}
+      >
+        {this.props.children}
       </CoursesContext.Provider>
     );
   }  

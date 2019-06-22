@@ -7,12 +7,12 @@ const Header = () => {
 
   return (
     <Consumer>
-      { ({ signedIn, user }) => {
+      { ({ signedIn, name }) => {
 
 				let linkOne = signedIn ? '' : '/signup';
 				let linkTwo = signedIn ? '/signout' : '/signin';
 				let textOne = signedIn
-          ? `Welcome, ${user.firstName} ${user.lastName}!`
+          ? `Welcome, ${name}`
           : 'Sign Up';
 				let textTwo = signedIn ? 'Sign Out' : 'Sign In';
 
