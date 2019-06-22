@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Provider } from './components/Context';
 
 // Import components
 import Header from './components/Header';
@@ -15,14 +14,14 @@ import UserSignOut from "./components/UserSignOut";
 
 
 export default class App extends Component {
-  constructor() {
-		super();
-		this.state = {
-			signedIn: false,
-			username: '',
-			password: ''
-		};
-	} 
+  // constructor() {
+	// 	super();
+	// 	this.state = {
+	// 		signedIn: false,
+	// 		username: '',
+	// 		password: ''
+	// 	};
+	// } 
 
 	// componentDidMount() {
 	// 	fetch("http://localhost:5000/api/courses")
@@ -37,63 +36,51 @@ export default class App extends Component {
 	// }
 
 	handleSignIn = () => {
+		console.log(`About to sign in`);
+
 
 	}
 
 
 	handleSignOut = () => {
-		
+		console.log(`handleSignOut is running successfully!`);
+
 	}
+
 
 
 	render() {
 		// console.log(this.state.signedIn);
 	
 		return (
-      <Provider
-        value={{
-          username: this.state.username,
-          password: this.state.password,
-          actions: {
-            signIn: this.handleSignIn,
-            signOut: this.handleSignOut
-          }
-        }}
-      >
-        <BrowserRouter>
-          <Header />
+			<BrowserRouter>
+				<Header />
 
-          <Switch>
-            {/* View list of courses page */}
-            <Route exact path="/" component={Courses} />
+				<Switch>
+					{/* View list of courses page */}
+					<Route exact path="/" component={Courses} />
+					{/* Create course page */}
+					<Route exact path="/courses/create" component={CreateCourse} />
 
-            {/* Create course page */}
-            <Route exact path="/courses/create" component={CreateCourse} />
+					{/* View course details page */}
+					<Route exact path="/courses/:id" component={CourseDetail} />
 
-            {/* View course details page */}
-            <Route exact path="/courses/:id" component={CourseDetail} />
+					{/* Update course page */}
+					<Route exact path="/courses/:id/update" component={UpdateCourse} />
 
-            {/* Update course page */}
-            <Route
-              exact
-              path="/courses/:id/update"
-              component={UpdateCourse}
-            />
+					{/* User sign in page */}
+					<Route exact path="/signin" component={UserSignIn} />
 
-            {/* User sign in page */}
-            <Route exact path="/signin" component={UserSignIn} />
+					{/* User sign up page */}
+					<Route exact path="/signup" component={UserSignUp} />
 
-            {/* User sign up page */}
-            <Route exact path="/signup" component={UserSignUp} />
+					{/* User sign out */}
+					<Route exact path="/signout" component={UserSignOut} />
 
-            {/* User sign out */}
-            <Route exact path="/signout" component={UserSignOut} />
-
-            {/* Route for 404 error */}
-            <Route component={NotFound} />
-          </Switch>
-        </BrowserRouter>
-      </Provider>
+					{/* Route for 404 error */}
+					<Route component={NotFound} />
+				</Switch>
+			</BrowserRouter>
     );
 	}
 }

@@ -30,7 +30,8 @@ export default class CourseDetail extends Component {
 	handleDeleteCourse = () => {
 		console.log(`About to delete course #${this.props.match.params.id}`);
 
-		
+		// TODO: Create fetch POST request here using fake authentication creds
+
 
 	}
 
