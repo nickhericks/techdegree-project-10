@@ -65,12 +65,14 @@ export default class CreateCourse extends Component {
 							// TODO: update error handler here?
 							console.log(error.response.status);
 							
+							// if user not signed in
 							if (error.response.status === 401) {
 								console.log(`You must sign in first`);
 								const { history } = this.props;
 								history.push("/signin");
 							}
 
+							// if validation error (empty required fields)
 							if (error.response.status === 400) {
 								errors = error.response.data.errors;
 
