@@ -9,7 +9,8 @@ export default class CourseDetail extends Component {
     super();
     this.state = {
 			course: {},
-			user: {}
+			user: {},
+			isCourseOwner: false,
     };
 	}
 	
@@ -22,8 +23,8 @@ export default class CourseDetail extends Component {
 					course: responseData.course,
 					user: responseData.course.user
 				});
-        console.log(this.state.course);
-        console.log(this.state.user);
+        // console.log(this.state.course);
+        // console.log(this.state.user);
       })
       .catch(error => console.log("Error fetching or parsing data", error));
 	}
@@ -54,17 +55,28 @@ export default class CourseDetail extends Component {
     return (
       <div>
         <Consumer>
-          {({ username, password, userId, actions }) => {
+          {({ username, password, userId }) => {
 
-							const handleDeleteCourse = () => {
+							const isCourseOwner = () => {
 								const ownerId = this.state.course.userId;
 								const authenticatedUserId = userId;
 
 								if(ownerId === authenticatedUserId) {
-									console.log('you own course');
-									console.log(this.props.match.params.id);
-									
-									axios({
+									return true;
+								} else {
+									return false;
+								}
+							}
+
+							console.log(isCourseOwner());
+							const showOwnerButtons = isCourseOwner();
+
+							const handleDeleteCourse = () => {
+
+								if (isCourseOwner()) {
+                  console.log("deleting course");
+
+                  axios({
                     method: "delete",
                     headers: {
                       "content-type": "application/json"
@@ -78,24 +90,26 @@ export default class CourseDetail extends Component {
                     }
                   }).catch(error => {
                     // TODO: update error handler here?
-										console.log(error.response.status);
-										console.log(error.response.data);
-										const { history } = this.props;
-										history.push("/error");
+                    console.log(error.response.status);
+                    console.log(error.response.data);
+                    const { history } = this.props;
+                    history.push("/error");
                   });
 
-									console.log(`DELETED course #${this.props.match.params.id}`);
+                  console.log(
+                    `DELETED course #${
+                      this.props.match.params.id
+                    }`
+                  );
 
-									// Send user back to previous page upon successful login
-									const { history } = this.props;
-									// const path = location.state ? location.state.prevLocation : '/';
-									history.push('/');
-
-
-								} else {
+                  // Send user back to previous page upon successful login
+                  const { history } = this.props;
+                  // const path = location.state ? location.state.prevLocation : '/';
+                  history.push("/");
+                } else {
                   // TODO: update what happens when not course owner
-									console.log('You do not own this course');
-								}
+                  console.log("You do not own this course");
+                }
 							}
 
 
@@ -107,13 +121,18 @@ export default class CourseDetail extends Component {
 											{/* if current user is owner, add 'update' and 'delete' buttons */}
 											{buttons}
 
-											<li className="button primary">
+											<li 
+												className="button primary"
+												style={{display: showOwnerButtons ? 'block' : 'none' }}
+												>
 												<Link to={`/courses/${id}/update`}>
 													<div className="button-text">Update Course</div>
 												</Link>
 											</li>
-											<li className="button primary">
-												<button
+											<li 
+												className="button primary"
+												style={{display: showOwnerButtons ? 'block' : 'none' }}
+												>												<button
 													onClick={handleDeleteCourse}
 													className="primary"
 												>
