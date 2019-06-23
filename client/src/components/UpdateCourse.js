@@ -52,7 +52,9 @@ export default class UpdateCourse extends Component {
 
 
   handleSubmit = e => {
-    e.preventDefault();
+		e.preventDefault();
+		
+		// TODO: Turn this component into a Consumer
 
     // TODO: Make POST request with data to REST API
 
