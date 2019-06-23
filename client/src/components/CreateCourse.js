@@ -78,7 +78,6 @@ export default class CreateCourse extends Component {
 							}
 							
 						});
-						// If error, log to console
 
 
 
