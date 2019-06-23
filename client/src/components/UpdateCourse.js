@@ -5,8 +5,15 @@ export default class UpdateCourse extends Component {
   constructor() {
     super();
     this.state = {
-      course: {},
-      user: {}
+			title: '',
+			description: '',
+			estimatedTime: '',
+			materialsNeeded: '',
+			id: null,
+			userId: null,
+			firstName: '',
+			lastName: '',
+			emailAddress: ''
     };
 	}
 	
@@ -14,29 +21,53 @@ export default class UpdateCourse extends Component {
     fetch(`http://localhost:5000/api/courses/${this.props.match.params.id}`)
       .then(response => response.json())
       .then(responseData => {
-        this.setState({ 
-					course: responseData.course,
-					user: responseData.course.user
-				});
-        console.log(this.state.course);
-        console.log(this.state.user);
+        this.setState({
+          title: responseData.course.title,
+          description: responseData.course.description,
+          estimatedTime: responseData.course.estimatedTime,
+          materialsNeeded: responseData.course.materialsNeeded,
+          id: responseData.course.id,
+          userId: responseData.course.userId,
+          firstName: responseData.course.user.firstName,
+          lastName: responseData.course.user.lastName,
+          emailAddress: responseData.course.user.emailAddress
+        });
+        console.log(this.state.title);
       })
       .catch(error => console.log("Error fetching or parsing data", error));
   }
 
 
-  titleRef = React.createRef();
-  descriptionRef = React.createRef();
-  timeRef = React.createRef();
-  materialsRef = React.createRef();
+  // titleRef = React.createRef();
+  // descriptionRef = React.createRef();
+  // timeRef = React.createRef();
+	// materialsRef = React.createRef();
+	
+
+		handleValueChange = (e) => {
+			console.log(e.target.name);
+			console.log(e.target.value);
+
+			let name = e.target.name;
+			let value = e.target.value;
+
+			this.setState({
+				[name]: value
+			});
+		}
+
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.title.current.value);
-    console.log(this.description.current.value);
-    console.log(this.time.current.value);
-    console.log(this.materials.current.value);
-    // this.props.addPlayer(this.emailAddress.current.value);
+    // console.log(this.title.current.value);
+    // console.log(this.description.current.value);
+    // console.log(this.time.current.value);
+		// console.log(this.materials.current.value);
+		// console.log(e.target.id);
+		// let value = e.name
+		this.setState({ value: '' })
+
+
 
     // TODO: Make POST request with data to REST API
 
@@ -46,12 +77,12 @@ export default class UpdateCourse extends Component {
   render() {
 
     // const id = this.state.course.id;
-    const title = this.state.course.title;
-    const description = this.state.course.description;
-    const estimatedTime = this.state.course.estimatedTime;
-    const materialsNeeded = this.state.course.materialsNeeded;
-    const firstName = this.state.user.firstName;
-    const lastName = this.state.user.lastName;
+    const title = this.state.title;
+    const description = this.state.description;
+    const estimatedTime = this.state.estimatedTime;
+    const materialsNeeded = this.state.materialsNeeded;
+    const firstName = this.state.firstName;
+    const lastName = this.state.lastName;
     const courseOwner = `${firstName} ${lastName}`;
 
 
@@ -65,9 +96,11 @@ export default class UpdateCourse extends Component {
               <h4>Course</h4>
               <h1 className="field-container">
                 <input
+									name="title"
                   className="title"
                   type="text"
-                  ref={this.titleRef}
+                  // ref={this.titleRef}
+                  onChange={this.handleValueChange}
                   value={title}
                 />
               </h1>
@@ -75,8 +108,10 @@ export default class UpdateCourse extends Component {
               <p className="field-container">
                 <textarea
                   id="description"
+									name="description"
                   rows="10"
-                  ref={this.descriptionRef}
+                  // ref={this.descriptionRef}
+                  onChange={this.handleValueChange}
                   value={description}
                 />
               </p>
@@ -84,17 +119,21 @@ export default class UpdateCourse extends Component {
             <div className="page-right">
               <h5>Estimated Time</h5>
               <p className="field-container">
-                <input 
-									type="text" 
-									ref={this.timeRef} 
-									value={estimatedTime} 
-								/>
+                <input
+                  type="text"
+                  // ref={this.timeRef}
+									name="estimatedTime"
+                  onChange={this.handleValueChange}
+                  value={estimatedTime}
+                />
               </p>
               <h5>Materials Needed</h5>
               <p className="field-container">
                 <input
                   type="text"
-                  ref={this.materialsRef}
+                  // ref={this.materialsRef}
+									name="materialsNeeded"
+                  onChange={this.handleValueChange}
                   value={materialsNeeded}
                 />
               </p>
