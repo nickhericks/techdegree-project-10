@@ -38,13 +38,7 @@ export default class UpdateCourse extends Component {
   }
 
 
-  // titleRef = React.createRef();
-  // descriptionRef = React.createRef();
-  // timeRef = React.createRef();
-	// materialsRef = React.createRef();
-	
-
-		handleValueChange = (e) => {
+	handleValueChange = (e) => {
 			console.log(e.target.name);
 			console.log(e.target.value);
 
@@ -59,15 +53,6 @@ export default class UpdateCourse extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // console.log(this.title.current.value);
-    // console.log(this.description.current.value);
-    // console.log(this.time.current.value);
-		// console.log(this.materials.current.value);
-		// console.log(e.target.id);
-		// let value = e.name
-		this.setState({ value: '' })
-
-
 
     // TODO: Make POST request with data to REST API
 
@@ -99,7 +84,6 @@ export default class UpdateCourse extends Component {
 									name="title"
                   className="title"
                   type="text"
-                  // ref={this.titleRef}
                   onChange={this.handleValueChange}
                   value={title}
                 />
@@ -110,7 +94,6 @@ export default class UpdateCourse extends Component {
                   id="description"
 									name="description"
                   rows="10"
-                  // ref={this.descriptionRef}
                   onChange={this.handleValueChange}
                   value={description}
                 />
@@ -121,7 +104,6 @@ export default class UpdateCourse extends Component {
               <p className="field-container">
                 <input
                   type="text"
-                  // ref={this.timeRef}
 									name="estimatedTime"
                   onChange={this.handleValueChange}
                   value={estimatedTime}
@@ -131,7 +113,6 @@ export default class UpdateCourse extends Component {
               <p className="field-container">
                 <input
                   type="text"
-                  // ref={this.materialsRef}
 									name="materialsNeeded"
                   onChange={this.handleValueChange}
                   value={materialsNeeded}
