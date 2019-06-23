@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Consumer } from "./Context";
+import axios from "axios";
 
 export default class UpdateCourse extends Component {
   constructor() {
