@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Consumer } from "./Context";
 
 export default class UpdateCourse extends Component {
   constructor() {
