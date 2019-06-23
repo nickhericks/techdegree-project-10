@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Consumer } from "./Context";
 
 
 export default class CourseDetail extends Component {
@@ -12,7 +13,6 @@ export default class CourseDetail extends Component {
 	}
 	
 	
-
   componentDidMount() {
     fetch(`http://localhost:5000/api/courses/${this.props.match.params.id}`)
       .then(response => response.json())
@@ -27,13 +27,7 @@ export default class CourseDetail extends Component {
       .catch(error => console.log("Error fetching or parsing data", error));
 	}
 	
-	handleDeleteCourse = () => {
-		console.log(`About to delete course #${this.props.match.params.id}`);
 
-		// TODO: Create fetch POST request here using fake authentication creds
-
-
-	}
 
   render() {
     // console.log(this.state.course);
@@ -58,39 +52,63 @@ export default class CourseDetail extends Component {
 
     return (
       <div>
-        <div className="details-subheader">
-          <div className="container">
-            <div className="subheader-flex">
+        <Consumer>
+          {({ userId, actions }) => {
+            // console.log(actions);
 
 
-              <ul className="button-list">
-                {/* if current user is owner, add 'update' and 'delete' buttons */}
-                {buttons}
-
-                <li className="button primary">
-                  <Link to={`/courses/${id}/update`}>
-                    <div className="button-text">Update Course</div>
-                  </Link>
-                </li>
-                <li className="button primary">
-                  <button onClick={this.handleDeleteCourse} className="primary">
-                    <div className="button-text">Delete Course</div>
-                  </button>
-                </li>
-                <li className="button secondary">
-                  <Link to={`/`}>
-                    <div className="button-text">
-                      <span className="blue">Return to List</span>
-                    </div>
-                  </Link>
-                </li>
-              </ul>
 
 
-            </div>
-          </div>
-        </div>
+							const handleDeleteCourse = () => {
+								const ownerId = this.state.course.userId;
+								const authenticatedUserId = userId;
+								console.log(`About to delete course #${this.props.match.params.id}`);
+								console.log(this.state.course.userId);
+								console.log(userId);
+								// TODO: Create fetch POST request here using authentication creds
+								if(ownerId === authenticatedUserId) {
+									console.log('you own course');
+								} else{
+									console.log('You do not own this course');
+								}
+							}
 
+
+            return (
+							<div className="details-subheader">
+								<div className="container">
+									<div className="subheader-flex">
+										<ul className="button-list">
+											{/* if current user is owner, add 'update' and 'delete' buttons */}
+											{buttons}
+
+											<li className="button primary">
+												<Link to={`/courses/${id}/update`}>
+													<div className="button-text">Update Course</div>
+												</Link>
+											</li>
+											<li className="button primary">
+												<button
+													onClick={handleDeleteCourse}
+													className="primary"
+												>
+													<div className="button-text">Delete Course</div>
+												</button>
+											</li>
+											<li className="button secondary">
+												<Link to={`/`}>
+													<div className="button-text">
+														<span className="blue">Return to List</span>
+													</div>
+												</Link>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						);
+          }}
+        </Consumer>
 
         <div className="container page-main">
           <div className="page-left">
@@ -106,9 +124,6 @@ export default class CourseDetail extends Component {
             <p className="materials">{materialsNeeded}</p>
           </div>
         </div>
-
-
-
       </div>
     );
   }
