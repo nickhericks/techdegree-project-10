@@ -36,23 +36,27 @@ export class Provider extends Component {
 			}
 		})
 			.then( response => {
-				console.log(response.data);
-				let name = `${response.data.firstName} ${response.data.lastName}`;
-				console.log(name);
+				let user = response.data;
+				let fullName = `${user.firstName} ${user.lastName}`;
 				this.setState({
           signedIn: true,
-          username: response.data.emailAddress,
+          username: user.emailAddress,
           password: clientPassword,
-					name: name,
-					userId: response.data.id
+          name: fullName,
+          userId: user.id
         });
 			})
 			.catch(error => {
-				console.log("No matching user", error);
-				alert("No matching user", error);
 				// TODO: update error handler here?
+				console.log(error.response.data);
+				console.log(error.response.status);
+				console.log(error.response.headers);
+				if (error.response.status = 401) {
+					const { history } = props;
+					history.push("/error");
+				}
+				
 			});
-			
 		// Send user back to previous page upon successful login
 		const { history, location } = props;
 		// const path = location.state ? location.state.prevLocation : '/';

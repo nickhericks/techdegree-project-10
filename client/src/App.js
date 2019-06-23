@@ -11,6 +11,7 @@ import UserSignUp from "./components/UserSignUp";
 import CreateCourse from "./components/CreateCourse";
 import UpdateCourse from "./components/UpdateCourse";
 import UserSignOut from "./components/UserSignOut";
+import UnhandledError from "./components/UnhandledError";
 
 
 export default class App extends Component {
@@ -62,6 +63,9 @@ export default class App extends Component {
 
 					{/* User sign out */}
 					<Route exact path="/signout" component={UserSignOut} />
+
+					{/* User sign out */}
+					<Route exact path="/error" component={UnhandledError} />
 
 					{/* Route for 404 error */}
 					<Route component={NotFound} />
