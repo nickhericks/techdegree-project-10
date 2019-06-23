@@ -56,7 +56,6 @@ export default class UpdateCourse extends Component {
   handleSubmit = e => {
 		e.preventDefault();
 		
-		// TODO: Turn this component into a Consumer
 
     // TODO: Make POST request with data to REST API
 
@@ -76,6 +75,14 @@ export default class UpdateCourse extends Component {
 
 
     return (
+
+			// TODO: Turn this component into a Consumer
+
+
+
+
+
+
       <div className="container no-subheader">
         <form onSubmit={this.handleSubmit}>
           <h2>Update Course</h2>
