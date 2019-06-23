@@ -104,7 +104,7 @@ authenticateUser, asyncHandler( async (req, res) => {
 		const id = addedCourse.id;
 
 		// Set the status to 201 Created, set Location header, and end the response.
-		res.location(`/api/courses/${id}`).status(201).end();
+		res.location(`/courses/${id}`).status(201).end();
 	}
 }));
 
