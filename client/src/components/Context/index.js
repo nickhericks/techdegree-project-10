@@ -41,7 +41,7 @@ export class Provider extends Component {
 				console.log(error.response.data);
 				console.log(error.response.status);
 				console.log(error.response.headers);
-				if (error.response.status = 401) {
+				if (error.response.status === 401) {
 					const { history } = props;
 					history.push("/error");
 				}

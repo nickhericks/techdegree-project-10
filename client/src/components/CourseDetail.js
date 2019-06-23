@@ -32,9 +32,6 @@ export default class CourseDetail extends Component {
 
 
   render() {
-    // console.log(this.state.course);
-    // console.log('Props', this.props);
-    // console.log(this.props.match.params.id);
 
     const id = this.state.course.id;
     const title = this.state.course.title;
@@ -45,12 +42,6 @@ export default class CourseDetail extends Component {
 		const lastName = this.state.user.lastName;
 		const courseOwner = `${firstName} ${lastName}`;
 
-
-
-		let buttons; 		
-		// If current user is owner, add 'update' and 'delete' buttons
-
-		
 
     return (
       <div>
@@ -68,7 +59,7 @@ export default class CourseDetail extends Component {
 								}
 							}
 
-							console.log(isCourseOwner());
+							// console.log(isCourseOwner());
 							const showOwnerButtons = isCourseOwner();
 
 							const handleDeleteCourse = () => {
@@ -118,9 +109,6 @@ export default class CourseDetail extends Component {
 								<div className="container">
 									<div className="subheader-flex">
 										<ul className="button-list">
-											{/* if current user is owner, add 'update' and 'delete' buttons */}
-											{buttons}
-
 											<li 
 												className="button primary"
 												style={{display: showOwnerButtons ? 'block' : 'none' }}

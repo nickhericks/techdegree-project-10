@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import PropTypes from "prop-types";
+import { Consumer } from "./Context";
+import axios from "axios";
+
 
 export default class UserSignUp extends Component {
-  // static propTypes = {
-  // 	addPlayer: PropTypes.func
-  // }
 
   firstName = React.createRef();
   lastName = React.createRef();
@@ -13,23 +12,99 @@ export default class UserSignUp extends Component {
   password = React.createRef();
   passwordConf = React.createRef();
 
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log(this.firstName.current.value);
-    console.log(this.lastName.current.value);
-    console.log(this.emailAddress.current.value);
-    console.log(this.password.current.value);
-    console.log(this.passwordConf.current.value);
-    // this.props.addPlayer(this.emailAddress.current.value);
-    e.currentTarget.reset();
-  };
-
   render() {
     return (
+			<Consumer>
+				{ ({ actions }) => {
+
+					let errors;
+
+
+					const handleSubmit = e => {
+						e.preventDefault();
+
+						// console.log(this.firstName.current.value);
+						// console.log(this.lastName.current.value);
+						// console.log(this.emailAddress.current.value);
+						// console.log(this.password.current.value);
+						// console.log(this.passwordConf.current.value);
+
+						// Assign values to variables
+						const userFirstName = this.firstName.current.value;
+						const userLastName = this.lastName.current.value;
+						const userEmailAddress = this.emailAddress.current.value;
+						const userPassword = this.password.current.value;
+						const userPasswordConf = this.passwordConf.current.value;
+
+
+						// Check password and passwordConf match
+						if (userPassword !== userPasswordConf) {
+							console.log('Password value does not match Password Confirmation value');
+							// TODO: create form validation error to display
+						} else {
+
+							// send POST request to create new user
+							axios({
+								method: 'post',
+								url: 'http://localhost:5000/api/users',
+								responseType: 'json',
+								data: {
+									firstName: userFirstName,
+									lastName: userLastName,
+									emailAddress: userEmailAddress,
+									password: userPassword
+								}
+							})
+							.then( response => {
+								// After user is created, sign in new user
+								actions.signIn(
+									userEmailAddress,
+									userPassword,
+									this.props
+								);
+							})
+							.catch(error => {
+								// TODO: update error handler here?
+								// console.log(error.response.data);
+								console.log(error.response.status);
+								// console.log(error.response.headers);
+								// console.log(error.response.data.errors);
+								
+								if (error.response.status === 400) {
+									errors = error.response.data.errors;
+
+									console.log(`Number of errors: ${errors.length}`);
+								}
+								
+							});
+							
+						}
+
+
+
+
+							// if user already exists, 
+								// give error
+								// route to error page?
+							// if user does not exist, 
+								// user is created
+								// sign in user
+								// route to previous page?
+
+
+
+
+
+
+
+					};
+
+
+					return (
       <div className="middle-section">
         <h2>Sign Up</h2>
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="field-container">
             <input
               type="text"
@@ -82,6 +157,9 @@ export default class UserSignUp extends Component {
           to sign in!
         </p>
       </div>
+					);
+				}}
+			</Consumer>
     );
   }
 }
