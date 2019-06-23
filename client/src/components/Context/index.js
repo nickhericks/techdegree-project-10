@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import axios from 'axios';
 const CoursesContext = React.createContext();
 
-// export const Provider = CoursesContext.Provider;
-// export const Consumer = CoursesContext.Consumer;
-
 
 export class Provider extends Component {
-
 	constructor() {
 		super();
 		this.state = {
@@ -20,12 +16,6 @@ export class Provider extends Component {
 	} 
 
 	handleSignIn = (clientUsername, clientPassword, props) => {
-
-		// TODO: Add fetch request, with a .then statement if user exists, .catch if not
-
-		// console.log(clientUsername);
-		// console.log(clientPassword);
-
 		axios({
 			method: 'get',
 			url: 'http://localhost:5000/api/users',
