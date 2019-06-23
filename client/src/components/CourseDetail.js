@@ -59,22 +59,32 @@ export default class CourseDetail extends Component {
 							const handleDeleteCourse = () => {
 								const ownerId = this.state.course.userId;
 								const authenticatedUserId = userId;
-								{/* console.log(`About to delete course #${this.props.match.params.id}`);
-								console.log(this.state.course.userId);
-								console.log(userId); */}
-								// TODO: Create fetch POST request here using authentication creds
+
 								if(ownerId === authenticatedUserId) {
 									console.log('you own course');
 									console.log(this.props.match.params.id);
 									
 									axios({
-										method: 'delete',
-										url: `http://localhost:5000/api/courses/${this.props.match.params.id}`,
-										auth: {
-											username: username,
-											password: password
-										}
-									})
+                    method: "delete",
+                    headers: {
+                      "content-type": "application/json"
+                    },
+                    url: `http://localhost:5000/api/courses/${
+                      this.props.match.params.id
+                    }`,
+                    auth: {
+                      username: username,
+                      password: password
+                    }
+                  }).catch(error => {
+                    // TODO: update error handler here?
+										console.log(error.response.status);
+										console.log(error.response.data);
+										const { history } = this.props;
+										history.push("/error");
+                  });
+
+									console.log(`DELETED course #${this.props.match.params.id}`);
 
 									// Send user back to previous page upon successful login
 									const { history } = this.props;
@@ -83,6 +93,7 @@ export default class CourseDetail extends Component {
 
 
 								} else {
+                  // TODO: update what happens when not course owner
 									console.log('You do not own this course');
 								}
 							}

@@ -133,14 +133,15 @@ router.put('/:id', [
 
 			// find existing course
 			const course = await Course.findByPk(req.params.id, {
-				attributes: ["id", "title", "description", "userId"],
-				include: [
-					{
-						model: User,
-						attributes: ["id", "firstName", "lastName", "emailAddress"]
-					}
-				]
-			});
+        attributes: ["id", "title", "description", "userId"],
+        include: [
+          {
+            model: User,
+            as: "user",
+            attributes: ["id", "firstName", "lastName", "emailAddress"]
+          }
+        ]
+      });
 
 			// if course exists
 			if (course) {
@@ -182,6 +183,7 @@ router.delete('/:id', authenticateUser, asyncHandler(async (req, res) => {
         include: [
           {
             model: User,
+            as: "user",
             attributes: ["id", "firstName", "lastName", "emailAddress"]
           }
         ]
