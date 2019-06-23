@@ -47,7 +47,6 @@ export default class UserSignUp extends Component {
 							axios({
 								method: 'post',
 								url: 'http://localhost:5000/api/users',
-								responseType: 'json',
 								data: {
 									firstName: userFirstName,
 									lastName: userLastName,
@@ -65,19 +64,25 @@ export default class UserSignUp extends Component {
 							})
 							.catch(error => {
 								// TODO: update error handler here?
-								// console.log(error.response.data);
+								console.log(error.response.data);
 								console.log(error.response.status);
-								// console.log(error.response.headers);
-								// console.log(error.response.data.errors);
+								console.log(error.response.headers);
+								console.log(error.response.data.errors);
 								
 								if (error.response.status === 400) {
-									errors = error.response.data.errors;
-
-									console.log(`Number of errors: ${errors.length}`);
+									// if multiple errors return, it is due to input validation
+									if (error.response.data.errors) {
+                    // update array of errors, use to display messages to user
+                    errors = error.response.data.errors;
+										console.log(`Number of errors: ${errors.length}`);
+                  } else {
+										// error is due to email already existing
+										// do no tell user email already exists, route to error page
+                    const { history } = this.props;
+                    history.push("/error");
+                  }
 								}
-								
 							});
-							
 						}
 
 
@@ -90,9 +95,6 @@ export default class UserSignUp extends Component {
 								// user is created
 								// sign in user
 								// route to previous page?
-
-
-
 
 
 
@@ -110,6 +112,7 @@ export default class UserSignUp extends Component {
               type="text"
               ref={this.firstName}
               placeholder="First Name"
+							autoFocus
             />
             <input
               type="text"

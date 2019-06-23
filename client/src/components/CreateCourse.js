@@ -57,12 +57,10 @@ export default class CreateCourse extends Component {
             })
 						.then( response => {
 							console.log(`CREATED COURSE: ${courseTitle}`);
-
 							const { history } = this.props;
 							history.push("/");
 						})
 						.catch(error => {
-							// TODO: update error handler here?
 							console.log(error.response.status);
 							
 							// if user not signed in

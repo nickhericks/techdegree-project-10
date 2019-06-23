@@ -39,6 +39,7 @@ export default class UserSignIn extends Component {
 										type="text"
 										ref={this.emailAddress}
 										placeholder="Email Address"
+										autoFocus
 									/>
 									<input
 										type="text"
