@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Consumer } from "./Context";
+import axios from 'axios';
 
 
 export default class CourseDetail extends Component {
@@ -53,22 +54,35 @@ export default class CourseDetail extends Component {
     return (
       <div>
         <Consumer>
-          {({ userId, actions }) => {
-            // console.log(actions);
-
-
-
+          {({ username, password, userId, actions }) => {
 
 							const handleDeleteCourse = () => {
 								const ownerId = this.state.course.userId;
 								const authenticatedUserId = userId;
-								console.log(`About to delete course #${this.props.match.params.id}`);
+								{/* console.log(`About to delete course #${this.props.match.params.id}`);
 								console.log(this.state.course.userId);
-								console.log(userId);
+								console.log(userId); */}
 								// TODO: Create fetch POST request here using authentication creds
 								if(ownerId === authenticatedUserId) {
 									console.log('you own course');
-								} else{
+									console.log(this.props.match.params.id);
+									
+									axios({
+										method: 'delete',
+										url: `http://localhost:5000/api/courses/${this.props.match.params.id}`,
+										auth: {
+											username: username,
+											password: password
+										}
+									})
+
+									// Send user back to previous page upon successful login
+									const { history } = this.props;
+									// const path = location.state ? location.state.prevLocation : '/';
+									history.push('/');
+
+
+								} else {
 									console.log('You do not own this course');
 								}
 							}
