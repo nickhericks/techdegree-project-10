@@ -16,17 +16,15 @@ export default class UserSignIn extends Component {
 			<Consumer>
 				{ ({ actions }) => {
 
-
+					// Attempt to sign user in
 					const handleSubmit = e => {
 						e.preventDefault();
-						console.log(this.emailAddress.current.value);
-						console.log(this.password.current.value);
+
 						actions.signIn(
               this.emailAddress.current.value,
               this.password.current.value,
 							this.props
             );
-						e.currentTarget.reset();
 					};
 
 					return (

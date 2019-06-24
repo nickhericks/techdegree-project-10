@@ -15,7 +15,8 @@ export default class UpdateCourse extends Component {
 			userId: null,
 			firstName: '',
 			lastName: '',
-			emailAddress: ''
+			emailAddress: '',
+			errors: []
     };
 	}
 	
@@ -49,8 +50,6 @@ export default class UpdateCourse extends Component {
 				{ ({ username, password, name, userId }) => {
 
 
-					let errors;
-
 					const id = this.state.id;
 					const title = this.state.title;
 					const description = this.state.description;
@@ -73,6 +72,10 @@ export default class UpdateCourse extends Component {
 					// On form submit, make PUT request to update course
 					const handleSubmit = e => {
 						e.preventDefault();
+
+						this.setState({
+							errors: []
+						});
 
 						// Send PUT request to update course
 						axios({
@@ -109,9 +112,31 @@ export default class UpdateCourse extends Component {
 
 							// if validation error (empty required fields)
 							if (error.response.status === 400) {
-								errors = error.response.data.errors;
 
-								console.log(`Number of errors: ${errors.length}`);
+								// update array of errors, use to display messages to user
+								let errors = error.response.data.errors;
+
+								console.log(errors);
+
+
+								let errorAlertMessages = errors.map(
+									(error, index) => (
+										<li className="validation-error" key={index}>
+											{error}
+										</li>
+									)
+								);
+								
+								this.setState({ errors: errorAlertMessages });
+
+
+								console.log(this.state.errors);
+
+
+
+
+
+
 							}
 							
 						});
@@ -124,6 +149,10 @@ export default class UpdateCourse extends Component {
             <div className="container no-subheader">
               <form onSubmit={handleSubmit}>
                 <h2>Update Course</h2>
+
+                <ul>
+									{this.state.errors}
+								</ul>
 
                 <div className="page-main">
                   <div className="page-left">

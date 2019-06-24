@@ -9,8 +9,7 @@ export default class UserSignUp extends Component {
 	  constructor() {
 		super();
 		this.state = {
-			errors: [],
-			errorAlerts: []
+			errors: []
 		};
 	} 
 
@@ -29,8 +28,7 @@ export default class UserSignUp extends Component {
 						e.preventDefault();
 
 						this.setState({
-							errors: [],
-							errorAlerts: []
+							errors: []
 						});
 
 						// Assign values to variables
@@ -48,8 +46,8 @@ export default class UserSignUp extends Component {
 							
 							
 							this.setState(prevState => ({
-								errorAlerts: [
-									...prevState.errorAlerts,
+								errors: [
+									...prevState.errors,
 									[
 										passwordMatchValidation
 									]
@@ -78,30 +76,19 @@ export default class UserSignUp extends Component {
 								);
 							})
 							.catch(error => {
-								console.log(error.response.data);
-								console.log(error.response.data.errors);
+								{/* console.log(error.response.data);
+								console.log(error.response.data.errors); */}
 								
 								if (error.response.status === 400) {
 									// if multiple errors return, it is due to input validation
 									if (error.response.data.errors) {
                     // update array of errors, use to display messages to user
-                    let newErrors = error.response.data.errors;
+                    let errors = error.response.data.errors;
 
-										console.log(newErrors);
-
-										this.setState({
-											errors: newErrors
-										});
+										console.log(errors);
 
 
-										console.log(this.state.errors);
-										console.log(this.state.errorAlerts);
-										console.log(`Number of errors: ${this.state.errors.length}`);
-
-
-										console.log(this.state.errors.length);
-
-										let errorAlertMessages = this.state.errors.map(
+										let errorAlertMessages = errors.map(
                       (error, index) => (
                         <li className="validation-error" key={index}>
                           {error}
@@ -109,10 +96,10 @@ export default class UserSignUp extends Component {
                       )
                     );
 										
-										this.setState({ errorAlerts: errorAlertMessages });
+										this.setState({ errors: errorAlertMessages });
 
 
-										console.log(this.state.errorAlerts);
+										console.log(this.state.errors);
 
 
 
@@ -146,7 +133,7 @@ export default class UserSignUp extends Component {
 							<h2>Sign Up</h2>
 
 							<ul>
-								{this.state.errorAlerts}
+								{this.state.errors}
 							</ul>
 
 							<form onSubmit={handleSubmit}>
