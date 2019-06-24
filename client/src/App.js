@@ -27,11 +27,12 @@ export default class App extends Component {
 				<Switch>
 					<Route exact path="/" render={ () =>
 						<Redirect to='/courses' />
-					} />					
+					} />			
+
 					<Route exact path="/courses" component={Courses} />
+					<PrivateRoute exact path="/courses/create" component={CreateCourse} />
+					<PrivateRoute exact path="/courses/:id/update" component={UpdateCourse} />
 					<Route exact path="/courses/:id" component={CourseDetail} />
-					<PrivateRoute path="/courses/:id/update" component={UpdateCourse} />
-					<PrivateRoute path="/courses/create" component={CreateCourse} />
 					<Route exact path="/signin" component={UserSignIn} />
 					<Route exact path="/signup" component={UserSignUp} />
 					<Route exact path="/signout" component={UserSignOut} />

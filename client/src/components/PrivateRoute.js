@@ -4,30 +4,25 @@ import { Consumer } from "./Context";
 
 const PrivateRoute = ({ component: Component, path }) => {
   return (
-		<Route 
-			path={path}
-			render={() => (
-				<Consumer>
-					{ ({ signedIn }) => (
-
-						signedIn ? (
-
-							<Component />
-
-						) : (
-
-							<Redirect to={{
-								pathname: '/signin',
-								state: {prevLocation: path}
-							}} 
-							/>
-						)
-
-
-					)}
-				</Consumer>
-			)}
-		/>
+    <Route
+      path={path}
+      render={(props) => (
+        <Consumer>
+          {({ signedIn }) =>
+            signedIn ? (
+              <Component  {...props} />
+            ) : (
+              <Redirect
+                to={{
+                  pathname: "/signin",
+									state: { previousPage: path }
+                }}
+              />
+            )
+          }
+        </Consumer>
+      )}
+    />
   );
 };
 

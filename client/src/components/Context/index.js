@@ -49,7 +49,7 @@ export class Provider extends Component {
 			});
 		// Send user back to previous page upon successful login
 		const { history, location } = props;
-		// const path = location.state ? location.state.prevLocation : '/';
+		// const path = location.state ? location.state.previousPage : '/';
 		history.push('/');
 	}
 
