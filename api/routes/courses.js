@@ -157,8 +157,10 @@ router.put('/:id', [
 						}
 					});
 
+					const id = course.id;
+
 					if (updatedCourse) {
-						res.status(204).end();
+						res.json({ id }).status(204).end();
 					}
 
 				} else {

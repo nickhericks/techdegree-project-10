@@ -111,9 +111,10 @@ export default class UpdateCourse extends Component {
               }
             })
 						.then( response => {
-							console.log(`CREATED COURSE: ${courseTitle}`);
-							const { history } = this.props;
-							history.push("/");
+							console.log(`COURSE UPDATED: ${courseTitle}`);
+              console.log(response.data);
+              const { history } = this.props;
+              history.push(`/courses/${response.data.id}`);
 						})
 						.catch(error => {
 							{/* console.log(error.response.status);
