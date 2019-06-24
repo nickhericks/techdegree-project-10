@@ -150,7 +150,9 @@ router.put('/:id', [
 					// update course details in Courses table
 					const updatedCourse = await Course.update({
 						title: req.body.title,
-						description: req.body.description
+						description: req.body.description,
+						estimatedTime: req.body.estimatedTime,
+						materialsNeeded: req.body.materialsNeeded
 					}, {
 						where: {
 							id: course.id

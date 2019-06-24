@@ -40,81 +40,65 @@ export default class UpdateCourse extends Component {
   }
 
 
-	handleValueChange = (e) => {
-			console.log(e.target.name);
-			console.log(e.target.value);
-
-			let name = e.target.name;
-			let value = e.target.value;
-
-			this.setState({
-				[name]: value
-			});
-		}
 
 
-  handleSubmit = e => {
-		e.preventDefault();
-		
 
-    // TODO: Make POST request with data to REST API
-
-    e.currentTarget.reset();
-  };
-
-  render() {
-
-    // const id = this.state.course.id;
-    const title = this.state.title;
-    const description = this.state.description;
-    const estimatedTime = this.state.estimatedTime;
-    const materialsNeeded = this.state.materialsNeeded;
-    const firstName = this.state.firstName;
-    const lastName = this.state.lastName;
-    const courseOwner = `${firstName} ${lastName}`;
-
-
+   render() {
     return (
-
-			// TODO: Turn this component into a Consumer
 			<Consumer>
-				{ ({ username, password, name, userId, actions }) => {
+				{ ({ username, password, name, userId }) => {
+
 
 					let errors;
+
+					const id = this.state.id;
+					const title = this.state.title;
+					const description = this.state.description;
+					const estimatedTime = this.state.estimatedTime;
+					const materialsNeeded = this.state.materialsNeeded;
+					const firstName = this.state.firstName;
+					const lastName = this.state.lastName;
+					const courseOwner = `${firstName} ${lastName}`;
+
+
+					const handleValueChange = e => {
+						console.log(e.target.name);
+						console.log(e.target.value);
+
+						let name = e.target.name;
+						let value = e.target.value;
+
+						this.setState({
+							[name]: value
+						});
+					};
 
 
 					const handleSubmit = e => {
 						e.preventDefault();
 
-						// Assign field values to variables
-						const courseTitle = this.title.current.value;
-						const courseDescription = this.description.current.value;
-						const courseEstimatedTime = this.time.current.value;
-						const courseMaterialsNeeded = this.materials.current.value;
-
-
 						// Send POST request to create course
 						axios({
-              method: "post",
-              url: 'http://localhost:5000/api/courses',
+              method: "put",
+              url: `http://localhost:5000/api/courses/${id}`,
               responseType: "json",
               auth: {
 								username: username,
 								password: password
               },
               data: {
-                title: courseTitle,
-								description: courseDescription,
-								estimatedTime: courseEstimatedTime,
-								materialsNeeded: courseMaterialsNeeded,
+                title: title,
+								description: description,
+								estimatedTime: estimatedTime,
+								materialsNeeded: materialsNeeded,
 								userId: userId
               }
             })
 						.then( response => {
-							console.log(`COURSE UPDATED: ${courseTitle}`);
+							console.log(`COURSE UPDATED: ${title}`);
               console.log(response.data);
               const { history } = this.props;
-              history.push(`/courses/${response.data.id}`);
+              history.push(`/courses/${id}`);
 						})
 						.catch(error => {
 							{/* console.log(error.response.status);
@@ -141,7 +125,7 @@ export default class UpdateCourse extends Component {
 
 					return (
             <div className="container no-subheader">
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={handleSubmit}>
                 <h2>Update Course</h2>
 
                 <div className="page-main">
@@ -152,7 +136,7 @@ export default class UpdateCourse extends Component {
                         name="title"
                         className="title"
                         type="text"
-                        onChange={this.handleValueChange}
+                        onChange={handleValueChange}
                         value={title}
                       />
                     </h1>
@@ -162,7 +146,7 @@ export default class UpdateCourse extends Component {
                         id="description"
                         name="description"
                         rows="10"
-                        onChange={this.handleValueChange}
+                        onChange={handleValueChange}
                         value={description}
                       />
                     </p>
@@ -173,7 +157,7 @@ export default class UpdateCourse extends Component {
                       <input
                         type="text"
                         name="estimatedTime"
-                        onChange={this.handleValueChange}
+                        onChange={handleValueChange}
                         value={estimatedTime}
                       />
                     </p>
@@ -182,7 +166,7 @@ export default class UpdateCourse extends Component {
                       <input
                         type="text"
                         name="materialsNeeded"
-                        onChange={this.handleValueChange}
+                        onChange={handleValueChange}
                         value={materialsNeeded}
                       />
                     </p>
