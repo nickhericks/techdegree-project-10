@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Consumer } from "./Context";
 import axios from "axios";
 
-export default class UpdateCourse extends Component {
+class UpdateCourse extends Component {
   constructor() {
     super();
     this.state = {
@@ -199,3 +199,5 @@ export default class UpdateCourse extends Component {
     );
   }
 }
+
+export default withRouter(UpdateCourse);

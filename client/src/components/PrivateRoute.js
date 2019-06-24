@@ -8,8 +8,23 @@ const PrivateRoute = ({ component: Component, path }) => {
 			path={path}
 			render={() => (
 				<Consumer>
-					
+					{ ({ signedIn }) => (
 
+						signedIn ? (
+
+							<Component />
+
+						) : (
+
+							<Redirect to={{
+								pathname: '/signin',
+								state: {prevLocation: path}
+							}} 
+							/>
+						)
+
+
+					)}
 				</Consumer>
 			)}
 		/>

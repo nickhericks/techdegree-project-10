@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Consumer } from "./Context";
 import axios from "axios";
 
-export default class CreateCourse extends Component {
+class CreateCourse extends Component {
 
 	  constructor() {
     super();
@@ -157,3 +157,5 @@ export default class CreateCourse extends Component {
     );
   }
 }
+
+export default withRouter(CreateCourse);
