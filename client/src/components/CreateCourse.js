@@ -4,6 +4,13 @@ import { Consumer } from "./Context";
 import axios from "axios";
 
 export default class CreateCourse extends Component {
+
+	  constructor() {
+    super();
+    this.state = {
+			errors: []
+    };
+	}
 	
 	// Assign refs to input fields
 	title = React.createRef();
@@ -24,6 +31,10 @@ export default class CreateCourse extends Component {
 					// On form submit, make POST request to create course
 					const handleSubmit = e => {
 						e.preventDefault();
+
+						this.setState({
+              errors: []
+            });
 
 						// Assign field values to variables
 						const courseTitle = this.title.current.value;
@@ -55,8 +66,6 @@ export default class CreateCourse extends Component {
 							history.push(`/courses/${response.data.id}`);
 						})
 						.catch(error => {
-							console.log(error.response.status);
-							
 							// if user not signed in
 							if (error.response.status === 401) {
 								console.log(`You must sign in first`);
@@ -66,19 +75,19 @@ export default class CreateCourse extends Component {
 
 							// if validation error (empty required fields)
 							if (error.response.status === 400) {
-								errors = error.response.data.errors;
-
-								console.log(`Number of errors: ${errors.length}`);
+								// update array of errors, use to display messages to user
+								let errors = error.response.data.errors;
+								let errorAlertMessages = errors.map(
+									(error, index) => (
+										<li className="validation-error" key={index}>
+											{error}
+										</li>
+									)
+								);
+								
+								this.setState({ errors: errorAlertMessages });
 							}
-							
 						});
-
-
-
-
-
-
-
 					};
 
 
@@ -86,6 +95,10 @@ export default class CreateCourse extends Component {
             <div className="container no-subheader">
               <form onSubmit={handleSubmit}>
                 <h2>Create Course</h2>
+
+                <ul>
+									{this.state.errors}
+								</ul>
 
                 <div className="page-main">
                   <div className="page-left">

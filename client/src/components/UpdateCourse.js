@@ -101,8 +101,6 @@ export default class UpdateCourse extends Component {
               history.push(`/courses/${id}`);
 						})
 						.catch(error => {
-							console.log(error.response.status);
-							
 							// if user not signed in
 							if (error.response.status === 401) {
 								console.log(`You must sign in first`);
@@ -112,13 +110,8 @@ export default class UpdateCourse extends Component {
 
 							// if validation error (empty required fields)
 							if (error.response.status === 400) {
-
 								// update array of errors, use to display messages to user
 								let errors = error.response.data.errors;
-
-								console.log(errors);
-
-
 								let errorAlertMessages = errors.map(
 									(error, index) => (
 										<li className="validation-error" key={index}>
@@ -128,20 +121,8 @@ export default class UpdateCourse extends Component {
 								);
 								
 								this.setState({ errors: errorAlertMessages });
-
-
-								console.log(this.state.errors);
-
-
-
-
-
-
 							}
-							
 						});
-
-
 					};
 
 
