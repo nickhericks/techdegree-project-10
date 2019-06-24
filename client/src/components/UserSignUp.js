@@ -40,17 +40,13 @@ export default class UserSignUp extends Component {
 
 						// Check password and passwordConf match
 						if (userPassword !== userPasswordConf) {
-							console.log('Password value does not match Password Confirmation value');
 
-							let passwordMatchValidation = <li className="validation-error" key="1000">'Password value does not match Password Confirmation value'</li>
-							
+							let passwordMatchValidation = <li className="validation-error" key="1000">Password value does not match Password Confirmation value</li>
 							
 							this.setState(prevState => ({
 								errors: [
 									...prevState.errors,
-									[
-										passwordMatchValidation
-									]
+									[ passwordMatchValidation ]
 								]
 							}));
 
@@ -76,18 +72,11 @@ export default class UserSignUp extends Component {
 								);
 							})
 							.catch(error => {
-								{/* console.log(error.response.data);
-								console.log(error.response.data.errors); */}
-								
 								if (error.response.status === 400) {
 									// if multiple errors return, it is due to input validation
 									if (error.response.data.errors) {
                     // update array of errors, use to display messages to user
                     let errors = error.response.data.errors;
-
-										console.log(errors);
-
-
 										let errorAlertMessages = errors.map(
                       (error, index) => (
                         <li className="validation-error" key={index}>
@@ -97,11 +86,6 @@ export default class UserSignUp extends Component {
                     );
 										
 										this.setState({ errors: errorAlertMessages });
-
-
-										console.log(this.state.errors);
-
-
 
                   } else {
 										// error is due to email already existing

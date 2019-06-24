@@ -19,14 +19,19 @@ export default class CourseDetail extends Component {
     fetch(`http://localhost:5000/api/courses/${this.props.match.params.id}`)
       .then(response => response.json())
       .then(responseData => {
-        this.setState({ 
-					course: responseData.course,
-					user: responseData.course.user
-				});
+        this.setState({
+          course: responseData.course,
+          user: responseData.course.user
+        });
         // console.log(this.state.course);
         // console.log(this.state.user);
       })
-      .catch(error => console.log("Error fetching or parsing data", error));
+      .catch(error => {
+        if (error) {
+          const { history } = this.props;
+          history.push("/notfound");
+        }
+			});
 	}
 	
 

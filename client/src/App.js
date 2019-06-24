@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 // Import components
 import Header from './components/Header';
@@ -23,7 +23,10 @@ export default class App extends Component {
 				<Header />
 
 				<Switch>
-					<Route exact path="/" component={Courses} />
+					<Route exact path="/" render={ () =>
+						<Redirect to='/courses' />
+					} />					
+					<Route exact path="/courses" component={Courses} />
 					<Route exact path="/courses/create" component={CreateCourse} />
 					<Route exact path="/courses/:id" component={CourseDetail} />
 					<Route exact path="/courses/:id/update" component={UpdateCourse} />

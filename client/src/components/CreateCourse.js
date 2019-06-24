@@ -24,10 +24,6 @@ export default class CreateCourse extends Component {
 			<Consumer>
 				{ ({ username, password, name, userId }) => {
 
-
-					let errors;
-
-
 					// On form submit, make POST request to create course
 					const handleSubmit = e => {
 						e.preventDefault();

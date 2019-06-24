@@ -22,33 +22,33 @@ export default class UpdateCourse extends Component {
 	
   componentDidMount() {
     fetch(`http://localhost:5000/api/courses/${this.props.match.params.id}`)
-      .then(response => response.json())
-      .then(responseData => {
-        this.setState({
-          title: responseData.course.title,
-          description: responseData.course.description,
-          estimatedTime: responseData.course.estimatedTime,
-          materialsNeeded: responseData.course.materialsNeeded,
-          id: responseData.course.id,
-          userId: responseData.course.userId,
-          firstName: responseData.course.user.firstName,
-          lastName: responseData.course.user.lastName,
-          emailAddress: responseData.course.user.emailAddress
-        });
-        console.log(this.state.title);
-      })
-      .catch(error => console.log("Error fetching or parsing data", error));
+			.then(response => response.json())
+			.then(responseData => {
+				this.setState({
+					title: responseData.course.title,
+					description: responseData.course.description,
+					estimatedTime: responseData.course.estimatedTime,
+					materialsNeeded: responseData.course.materialsNeeded,
+					id: responseData.course.id,
+					userId: responseData.course.userId,
+					firstName: responseData.course.user.firstName,
+					lastName: responseData.course.user.lastName,
+					emailAddress: responseData.course.user.emailAddress
+				});
+			})
+			.catch((error) => {
+				if (error) {
+					const { history } = this.props;
+					history.push("/notfound");
+				}
+			});
   }
-
-
-
 
 
    render() {
     return (
 			<Consumer>
 				{ ({ username, password, name, userId }) => {
-
 
 					const id = this.state.id;
 					const title = this.state.title;
@@ -58,7 +58,6 @@ export default class UpdateCourse extends Component {
 					const firstName = this.state.firstName;
 					const lastName = this.state.lastName;
 					const courseOwner = `${firstName} ${lastName}`;
-
 
 					// Update component state using input name and value
 					const handleValueChange = e => {
