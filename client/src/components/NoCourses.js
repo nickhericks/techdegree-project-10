@@ -1,7 +1,7 @@
 import React from "react";
 
 // Component for no images returned from API request
-const NoPics = () => {
+const NoCourses = () => {
   return (
     <li className="not-found">
       <h3>No Results Found</h3>
@@ -10,4 +10,4 @@ const NoPics = () => {
   );
 };
 
-export default NoPics;
+export default NoCourses;

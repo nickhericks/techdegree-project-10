@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import CourseCard from "./CourseCard";
 // import NoCourses from "./NoCourses";
 
+import NoCourses from "./NoCourses";
 
 
 
@@ -46,8 +47,8 @@ export default class Courses extends Component {
 			));
 			console.log(currentCourses);
 		} else {
-			// If array is empty, display NoPics component
-			// currentCourses = "";
+			// If array is empty, display NoCourses component
+			currentCourses = <NoCourses />
 		}
 
 		return (
