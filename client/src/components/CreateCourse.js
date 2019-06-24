@@ -4,30 +4,24 @@ import { Consumer } from "./Context";
 import axios from "axios";
 
 export default class CreateCourse extends Component {
-  constructor() {
-    super();
-    this.state = {
-
-    };
-  }
-
 	
+	// Assign refs to input fields
 	title = React.createRef();
 	description = React.createRef();
 	time = React.createRef();
 	materials = React.createRef();
 
 
-
-
 	render() {
      return (
 			<Consumer>
-				{ ({ username, password, name, userId, actions }) => {
+				{ ({ username, password, name, userId }) => {
+
 
 					let errors;
 
 
+					// On form submit, make POST request to create course
 					const handleSubmit = e => {
 						e.preventDefault();
 

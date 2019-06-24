@@ -61,23 +61,20 @@ export default class UpdateCourse extends Component {
 					const courseOwner = `${firstName} ${lastName}`;
 
 
+					// Update component state using input name and value
 					const handleValueChange = e => {
-						console.log(e.target.name);
-						console.log(e.target.value);
-
 						let name = e.target.name;
 						let value = e.target.value;
-
 						this.setState({
 							[name]: value
 						});
 					};
 
-
+					// On form submit, make PUT request to update course
 					const handleSubmit = e => {
 						e.preventDefault();
 
-						// Send POST request to create course
+						// Send PUT request to update course
 						axios({
               method: "put",
               url: `http://localhost:5000/api/courses/${id}`,
@@ -101,7 +98,7 @@ export default class UpdateCourse extends Component {
               history.push(`/courses/${id}`);
 						})
 						.catch(error => {
-							{/* console.log(error.response.status);
+							console.log(error.response.status);
 							
 							// if user not signed in
 							if (error.response.status === 401) {
@@ -115,7 +112,7 @@ export default class UpdateCourse extends Component {
 								errors = error.response.data.errors;
 
 								console.log(`Number of errors: ${errors.length}`);
-							} */}
+							}
 							
 						});
 
