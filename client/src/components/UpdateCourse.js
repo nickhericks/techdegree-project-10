@@ -77,75 +77,134 @@ export default class UpdateCourse extends Component {
     return (
 
 			// TODO: Turn this component into a Consumer
+			<Consumer>
+				{ ({ username, password, name, userId, actions }) => {
+
+					let errors;
 
 
+					const handleSubmit = e => {
+						e.preventDefault();
+
+						// Assign field values to variables
+						const courseTitle = this.title.current.value;
+						const courseDescription = this.description.current.value;
+						const courseEstimatedTime = this.time.current.value;
+						const courseMaterialsNeeded = this.materials.current.value;
 
 
+						// Send POST request to create course
+						axios({
+              method: "post",
+              url: 'http://localhost:5000/api/courses',
+              responseType: "json",
+              auth: {
+								username: username,
+								password: password
+              },
+              data: {
+                title: courseTitle,
+								description: courseDescription,
+								estimatedTime: courseEstimatedTime,
+								materialsNeeded: courseMaterialsNeeded,
+								userId: userId
+              }
+            })
+						.then( response => {
+							console.log(`CREATED COURSE: ${courseTitle}`);
+							const { history } = this.props;
+							history.push("/");
+						})
+						.catch(error => {
+							{/* console.log(error.response.status);
+							
+							// if user not signed in
+							if (error.response.status === 401) {
+								console.log(`You must sign in first`);
+								const { history } = this.props;
+								history.push("/signin");
+							}
+
+							// if validation error (empty required fields)
+							if (error.response.status === 400) {
+								errors = error.response.data.errors;
+
+								console.log(`Number of errors: ${errors.length}`);
+							} */}
+							
+						});
 
 
-      <div className="container no-subheader">
-        <form onSubmit={this.handleSubmit}>
-          <h2>Update Course</h2>
+					};
 
-          <div className="page-main">
-            <div className="page-left">
-              <h4>Course</h4>
-              <h1 className="field-container">
-                <input
-									name="title"
-                  className="title"
-                  type="text"
-                  onChange={this.handleValueChange}
-                  value={title}
-                />
-              </h1>
-              <h4>By {courseOwner}</h4>
-              <p className="field-container">
-                <textarea
-                  id="description"
-									name="description"
-                  rows="10"
-                  onChange={this.handleValueChange}
-                  value={description}
-                />
-              </p>
-            </div>
-            <div className="page-right">
-              <h5>Estimated Time</h5>
-              <p className="field-container">
-                <input
-                  type="text"
-									name="estimatedTime"
-                  onChange={this.handleValueChange}
-                  value={estimatedTime}
-                />
-              </p>
-              <h5>Materials Needed</h5>
-              <p className="field-container">
-                <input
-                  type="text"
-									name="materialsNeeded"
-                  onChange={this.handleValueChange}
-                  value={materialsNeeded}
-                />
-              </p>
-            </div>
-          </div>
 
-          <ul className="button-list">
-            <li className="button primary">
-              <input type="submit" value="Update Course" />
-            </li>
-            <li className="button secondary">
-              <Link to={`/`}>
-                <div className="button-text">
-                  <span className="blue">Cancel</span>
+					return (
+            <div className="container no-subheader">
+              <form onSubmit={this.handleSubmit}>
+                <h2>Update Course</h2>
+
+                <div className="page-main">
+                  <div className="page-left">
+                    <h4>Course</h4>
+                    <h1 className="field-container">
+                      <input
+                        name="title"
+                        className="title"
+                        type="text"
+                        onChange={this.handleValueChange}
+                        value={title}
+                      />
+                    </h1>
+                    <h4>By {courseOwner}</h4>
+                    <p className="field-container">
+                      <textarea
+                        id="description"
+                        name="description"
+                        rows="10"
+                        onChange={this.handleValueChange}
+                        value={description}
+                      />
+                    </p>
+                  </div>
+                  <div className="page-right">
+                    <h5>Estimated Time</h5>
+                    <p className="field-container">
+                      <input
+                        type="text"
+                        name="estimatedTime"
+                        onChange={this.handleValueChange}
+                        value={estimatedTime}
+                      />
+                    </p>
+                    <h5>Materials Needed</h5>
+                    <p className="field-container">
+                      <input
+                        type="text"
+                        name="materialsNeeded"
+                        onChange={this.handleValueChange}
+                        value={materialsNeeded}
+                      />
+                    </p>
+                  </div>
                 </div>
-              </Link>
-            </li>
-          </ul>
-        </form>
-      </div>
+
+                <ul className="button-list">
+                  <li className="button primary">
+                    <input type="submit" value="Update Course" />
+                  </li>
+                  <li className="button secondary">
+                    <Link to={`/`}>
+                      <div className="button-text">
+                        <span className="blue">Cancel</span>
+                      </div>
+                    </Link>
+                  </li>
+                </ul>
+              </form>
+            </div>
+          );
+				}}
+			</Consumer>
     );
   }
 }

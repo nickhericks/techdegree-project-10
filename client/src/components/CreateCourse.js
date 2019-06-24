@@ -58,7 +58,7 @@ export default class CreateCourse extends Component {
 						.then( response => {
 							console.log(`CREATED COURSE: ${courseTitle}`);
 							const { history } = this.props;
-							history.push("/");
+							history.push(`/courses/${response.data.id}`);
 						})
 						.catch(error => {
 							console.log(error.response.status);
