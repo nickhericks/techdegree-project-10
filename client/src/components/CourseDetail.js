@@ -79,7 +79,14 @@ export default class CourseDetail extends Component {
                       username: username,
                       password: password
                     }
-                  }).catch(error => {
+                  })
+									.then( response => {
+										console.log(`DELETED course #${this.props.match.params.id}`
+										);
+										const { history } = this.props;
+										history.push("/");
+									})
+									.catch(error => {
                     // TODO: update error handler here?
                     console.log(error.response.status);
                     console.log(error.response.data);
@@ -87,16 +94,6 @@ export default class CourseDetail extends Component {
                     history.push("/error");
                   });
 
-                  console.log(
-                    `DELETED course #${
-                      this.props.match.params.id
-                    }`
-                  );
-
-                  // Send user back to previous page upon successful login
-                  const { history } = this.props;
-                  // const path = location.state ? location.state.prevLocation : '/';
-                  history.push("/");
                 } else {
                   // TODO: update what happens when not course owner
                   console.log("You do not own this course");
