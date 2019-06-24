@@ -44,6 +44,7 @@ export default class Courses extends Component {
 					title={course.title}
 				/>
 			));
+			console.log(currentCourses);
 		} else {
 			// If array is empty, display NoPics component
 			// currentCourses = "";

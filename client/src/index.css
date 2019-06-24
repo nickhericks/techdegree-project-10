@@ -85,6 +85,16 @@ textarea {
 	color: #226399;
 }
 
+.validation-error {
+	background-color: #ff3b3b;
+	/* border: 1px solid #ff0000; */
+	border-radius: 5px;
+	font-size: .9rem;
+	font-weight: bold;
+	color: #ffffff;
+	margin-top: 5px;
+	padding: 10px;
+}
 
 /* =============== BUTTONS =============== */
 
