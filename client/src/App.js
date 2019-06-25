@@ -32,6 +32,7 @@ export default class App extends Component {
 					<Route exact path="/" render={ () => <Redirect to='/courses' />} />
 					<Route exact path="/courses" component={Courses} />
 
+					{/* PrivateRoute (Higher-Order Component) requiring user sign in for routes */}
 					<PrivateRoute exact path="/courses/create" component={CreateCourse} />
 					<PrivateRoute exact path="/courses/:id/update" component={UpdateCourse} />
 					
