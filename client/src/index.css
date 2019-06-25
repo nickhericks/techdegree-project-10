@@ -271,9 +271,6 @@ li.course-card {
 	font-weight: bold;
 }
 
-.materials {
-
-}
 
 /* =============== SIGN IN =============== */
 .middle-section {
@@ -327,13 +324,3 @@ input[type=submit] {
 	width: 100%;
 	height: 100%;
 }
-
-button, 
-input[type=submit] {
-  /* outline: none; */
-  /* transition: background-color 0.2s ease,
-              color 0.2s ease; */
-}
-
-
-

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 const CourseCard = ({ id, title }) => {
   return (
     <li className="course-card" key={id}>
