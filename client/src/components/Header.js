@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Consumer } from "./Context";
 
 
@@ -23,10 +23,10 @@ const Header = () => {
               <nav className="main-nav">
                 <ul>
                   <li>
-                    <Link to={linkOne}>{textOne}</Link>
+                    <NavLink to={linkOne}>{textOne}</NavLink>
                   </li>
                   <li>
-                    <Link to={linkTwo}>{textTwo}</Link>
+                    <NavLink to={linkTwo}>{textTwo}</NavLink>
                   </li>
                 </ul>
               </nav>
