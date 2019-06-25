@@ -15,17 +15,16 @@ export default class CourseDetail extends Component {
     };
 	}
 	
-	
+	// Make GET request for course data when component mounts
   componentDidMount() {
     fetch(`http://localhost:5000/api/courses/${this.props.match.params.id}`)
       .then(response => response.json())
       .then(responseData => {
+				// User response data to update component state
         this.setState({
           course: responseData.course,
           user: responseData.course.user
         });
-        // console.log(this.state.course);
-        // console.log(this.state.user);
       })
       .catch(error => {
         if (error) {
@@ -36,74 +35,59 @@ export default class CourseDetail extends Component {
 	}
 	
 
-
   render() {
-
-    const id = this.state.course.id;
-    const title = this.state.course.title;
-    const description = this.state.course.description;
-    const estimatedTime = this.state.course.estimatedTime;
-		const materialsNeeded = this.state.course.materialsNeeded;
-		const firstName = this.state.user.firstName;
-		const lastName = this.state.user.lastName;
+		const { id, title, description, estimatedTime, materialsNeeded } = this.state.course;
+		const { firstName, lastName } = this.state.user;
 		const courseOwner = `${firstName} ${lastName}`;
 
     return (
       <div>
         <Consumer>
-          {({ username, password, userId, actions }) => {
+          {({ username, password, userId }) => {
 
-							const isCourseOwner = () => {
-								const ownerId = this.state.course.userId;
-								const authenticatedUserId = userId;
+						// Check if logged in user matches course owner
+						const isCourseOwner = () => {
+							const ownerId = this.state.course.userId;
+							const authenticatedUserId = userId;
 
-								if(ownerId === authenticatedUserId) {
-									return true;
-								} else {
-									return false;
-								}
+							if(ownerId === authenticatedUserId) {
+								return true;
+							} else {
+								return false;
 							}
+						}
 
-							// console.log(isCourseOwner());
-							const showOwnerButtons = isCourseOwner();
 
-							const handleDeleteCourse = () => {
-
-								if (isCourseOwner()) {
-                  console.log("deleting course");
-
-                  axios({
-                    method: "delete",
-                    headers: {
-                      "content-type": "application/json"
-                    },
-                    url: `http://localhost:5000/api/courses/${
-                      this.props.match.params.id
-                    }`,
-                    auth: {
-                      username: username,
-                      password: password
-                    }
-                  })
-									.then( response => {
-										console.log(`DELETED course #${this.props.match.params.id}`
-										);
-										const { history } = this.props;
-										history.push("/");
-									})
-									.catch(error => {
-                    // TODO: update error handler here?
-                    console.log(error.response.status);
-                    console.log(error.response.data);
-                    const { history } = this.props;
-                    history.push("/error");
-                  });
-
-                } else {
-                  // TODO: update what happens when not course owner
-                  console.log("You do not own this course");
-                }
+						// Delete course
+						const handleDeleteCourse = () => {
+							if (isCourseOwner()) {
+								// Send DELETE request to REST API with credentials
+								axios({
+									method: "delete",
+									headers: {
+										"content-type": "application/json"
+									},
+									url: `http://localhost:5000/api/courses/${
+										this.props.match.params.id
+									}`,
+									auth: {
+										username: username,
+										password: password
+									}
+								})
+								.then( () => {
+									const { history } = this.props;
+									history.push("/");
+								})
+								.catch(error => {
+									const { history } = this.props;
+									history.push("/error");
+								});
+							} else {
+								const { history } = this.props;
+								history.push("/forbidden");
 							}
+						}
 
 
             return (
@@ -113,7 +97,7 @@ export default class CourseDetail extends Component {
 										<ul className="button-list">
 											<li 
 												className="button primary"
-												style={{display: showOwnerButtons ? 'block' : 'none' }}
+												style={{display: isCourseOwner() ? 'block' : 'none' }}
 												>
 												<Link to={`/courses/${id}/update`}>
 													<div className="button-text">Update Course</div>
@@ -121,7 +105,7 @@ export default class CourseDetail extends Component {
 											</li>
 											<li 
 												className="button primary"
-												style={{display: showOwnerButtons ? 'block' : 'none' }}
+												style={{display: isCourseOwner() ? 'block' : 'none' }}
 												>												
 												<button
 													onClick={handleDeleteCourse}
@@ -150,17 +134,13 @@ export default class CourseDetail extends Component {
             <h4>Course</h4>
             <h1>{title}</h1>
             <h4>By {courseOwner}</h4>
-						<ReactMarkdown
-							source={description} />
+						<ReactMarkdown source={description} />
           </div>
           <div className="page-right">
             <h5>Estimated Time</h5>
             <p className="time">{estimatedTime}</p>
             <h5>Materials Needed</h5>
-						<ReactMarkdown 
-							className="materials"
-							source={materialsNeeded}
-						/>
+						<ReactMarkdown className="materials" source={materialsNeeded}	/>
           </div>
         </div>
       </div>
