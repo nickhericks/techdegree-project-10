@@ -144,6 +144,8 @@ ul.button-list button {
 /* =============== HEADER =============== */
 header {
 	background-color: #226399;
+  box-shadow: 0 0px 10px 5px rgba(46, 46, 46, 0.5);
+  overflow: hidden;
 }
 
 .header-container {
@@ -151,11 +153,12 @@ header {
 	justify-content: space-between;
 }
 
-.header-container h1 {
+.home {
 	margin: 0;
 	padding: .5rem 0;
 	color: #fff;
 	font-size: 2rem;
+	font-weight: bold;
 }
 
 .header-container .main-nav ul {
