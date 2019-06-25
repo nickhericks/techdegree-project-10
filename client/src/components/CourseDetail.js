@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Consumer } from "./Context";
 import axios from 'axios';
+import ReactMarkdown from "react-markdown";
 
 
 export default class CourseDetail extends Component {
@@ -46,6 +47,8 @@ export default class CourseDetail extends Component {
 		const firstName = this.state.user.firstName;
 		const lastName = this.state.user.lastName;
 		const courseOwner = `${firstName} ${lastName}`;
+		console.log(description);
+		console.log(materialsNeeded);
 
 
     return (
@@ -149,13 +152,17 @@ export default class CourseDetail extends Component {
             <h4>Course</h4>
             <h1>{title}</h1>
             <h4>By {courseOwner}</h4>
-            <p>{description}</p>
+						<ReactMarkdown
+							source={description} />
           </div>
           <div className="page-right">
             <h5>Estimated Time</h5>
             <p className="time">{estimatedTime}</p>
             <h5>Materials Needed</h5>
-            <p className="materials">{materialsNeeded}</p>
+						<ReactMarkdown 
+							className="materials"
+							source={materialsNeeded}
+						/>
           </div>
         </div>
       </div>

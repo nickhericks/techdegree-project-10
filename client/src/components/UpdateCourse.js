@@ -151,7 +151,7 @@ class UpdateCourse extends Component {
                       <textarea
                         id="description"
                         name="description"
-                        rows="10"
+                        rows="12"
                         onChange={handleValueChange}
                         value={description}
                       />
@@ -169,9 +169,10 @@ class UpdateCourse extends Component {
                     </p>
                     <h5>Materials Needed</h5>
                     <p className="field-container">
-                      <input
+                      <textarea
                         type="text"
                         name="materialsNeeded"
+												rows="9"
                         onChange={handleValueChange}
                         value={materialsNeeded}
                       />
