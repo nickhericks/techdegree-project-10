@@ -4,6 +4,7 @@ const CoursesContext = React.createContext();
 
 
 export class Provider extends Component {
+	
 	constructor() {
 		super();
 		this.state = {
@@ -15,6 +16,8 @@ export class Provider extends Component {
 		};
 	} 
 
+
+	// Sign user in
 	handleSignIn = (clientUsername, clientPassword, props) => {
 		axios({
 			method: 'get',
@@ -54,8 +57,8 @@ export class Provider extends Component {
 	}
 
 
+	// Sign user out
 	handleSignOut = () => {
-		console.log(`Signing user OUT`);
 		this.setState({
       signedIn: false,
       username: "",
@@ -69,21 +72,13 @@ export class Provider extends Component {
 	}
 
 
-
-
-
   render() {
-
-		console.log(`CONTEXT STATE`);
-		console.log(`SIGNED IN: ${this.state.signedIn}`);
-		console.log(`USERNAME: ${this.state.username}`);
-		console.log(`PASSWORD: ${this.state.password}`);
-		console.log(`FULL NAME: ${this.state.name}`);
-		console.log(`USER ID: ${this.state.userId}`);
-
-
-
-
+		// console.log(`CONTEXT STATE`);
+		// console.log(`SIGNED IN: ${this.state.signedIn}`);
+		// console.log(`USERNAME: ${this.state.username}`);
+		// console.log(`PASSWORD: ${this.state.password}`);
+		// console.log(`FULL NAME: ${this.state.name}`);
+		// console.log(`USER ID: ${this.state.userId}`);
 
     return (
       <CoursesContext.Provider
