@@ -14,25 +14,26 @@ export default class Courses extends Component {
 		};
 	} 
 
-
 	componentDidMount() {
 		fetch("http://localhost:5000/api/courses")
 		.then(response => response.json())
 		.then(responseData => {
-			this.setState({ courses: responseData.courses });
-			// console.log(this.state.courses);
+			this.setState({ 
+				courses: responseData.courses 
+			});
 		})
-		.catch(error =>
-			console.log("Error fetching or parsing data", error)	
-		);
+		.catch( () => {
+			const { history } = this.props;
+			history.push("/error");
+		});
 	}
 
 
-
 	render() {
-	
+		// Assign variable for list of current courses
 		let currentCourses;
 
+		// Update array using courses in component state
 		currentCourses = this.state.courses.map( course => (
 			<CourseCard
 				id={course.id}
@@ -45,7 +46,7 @@ export default class Courses extends Component {
       <div className="container">
         <ul className="course-list">
           {currentCourses}
-
+					{/* Display 'Add New Course' card */}
           <li className="course-card" id="new-course-card">
             <Link to={`/courses/create`}>
               <div className="new-course-card-title">Add New Course</div>
