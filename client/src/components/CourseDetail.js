@@ -47,14 +47,11 @@ export default class CourseDetail extends Component {
 		const firstName = this.state.user.firstName;
 		const lastName = this.state.user.lastName;
 		const courseOwner = `${firstName} ${lastName}`;
-		console.log(description);
-		console.log(materialsNeeded);
-
 
     return (
       <div>
         <Consumer>
-          {({ username, password, userId }) => {
+          {({ username, password, userId, actions }) => {
 
 							const isCourseOwner = () => {
 								const ownerId = this.state.course.userId;
@@ -128,9 +125,9 @@ export default class CourseDetail extends Component {
 												>												
 												<button
 													onClick={handleDeleteCourse}
-													className="primary"
+													className="button primary"
 												>
-													<div className="button-text">Delete Course</div>
+													<div>Delete Course</div>
 												</button>
 											</li>
 											<li className="button secondary">

@@ -29,13 +29,12 @@ export default class App extends Component {
 				<Header />
 
 				<Switch>
-					<Route exact path="/" render={ () =>
-						<Redirect to='/courses' />
-					} />			
-
+					<Route exact path="/" render={ () => <Redirect to='/courses' />} />
 					<Route exact path="/courses" component={Courses} />
+
 					<PrivateRoute exact path="/courses/create" component={CreateCourse} />
 					<PrivateRoute exact path="/courses/:id/update" component={UpdateCourse} />
+					
 					<Route exact path="/courses/:id" component={CourseDetail} />
 					<Route exact path="/signin" component={UserSignIn} />
 					<Route exact path="/signup" component={UserSignUp} />
@@ -45,7 +44,7 @@ export default class App extends Component {
 					<Route exact path="/forbidden" component={Forbidden} />
 					<Route exact path="/notfound" component={NotFound} />
 
-					{/* Route for 404 error */}
+					{/* Catch all requested routes not defined above */}
 					<Route component={NotFound} />
 					
 				</Switch>

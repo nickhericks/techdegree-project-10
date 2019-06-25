@@ -34,23 +34,23 @@ export class Provider extends Component {
           password: clientPassword,
           name: fullName,
           userId: user.id
-        });
+				});
+				
+				// Set user login credentials for browser localStorage
+				// localStorage.setItem('storageUsername', user.emailAddress);
+				// localStorage.setItem('storagePassword', clientPassword);
 			})
 			.catch(error => {
-				// TODO: update error handler here?
-				console.log(error.response.data);
-				console.log(error.response.status);
-				console.log(error.response.headers);
+				// If problem with authentication
 				if (error.response.status === 401) {
 					const { history } = props;
 					history.push("/error");
 				}
-				
 			});
-		// Send user back to previous page upon successful login
-		const { history, location } = props;
-		// const path = location.state ? location.state.previousPage : '/';
-		history.push('/');
+
+			// Send user back to home page after log in
+			const { history } = props;
+			history.push('/');
 	}
 
 
@@ -62,8 +62,14 @@ export class Provider extends Component {
       password: "",
 			name: "",
 			userId: null
-    });
+		});
+		
+		// Remove user login credentials from browser localStorage
+		// localStorage.clear();
 	}
+
+
+
 
 
   render() {
@@ -74,6 +80,9 @@ export class Provider extends Component {
 		console.log(`PASSWORD: ${this.state.password}`);
 		console.log(`FULL NAME: ${this.state.name}`);
 		console.log(`USER ID: ${this.state.userId}`);
+
+
+
 
 
     return (

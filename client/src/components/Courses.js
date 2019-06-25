@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 
 // Import components
 import CourseCard from "./CourseCard";
-// import NoCourses from "./NoCourses";
-
-import NoCourses from "./NoCourses";
-
 
 
 export default class Courses extends Component {
@@ -36,20 +32,14 @@ export default class Courses extends Component {
 	render() {
 	
 		let currentCourses;
-		// If array is not empty, iterate over it
-		if (this.state.courses.length > 0) {
-			currentCourses = this.state.courses.map( course => (
-				<CourseCard
-					id={course.id}
-					key={course.id}
-					title={course.title}
-				/>
-			));
-			console.log(currentCourses);
-		} else {
-			// If array is empty, display NoCourses component
-			currentCourses = <NoCourses />
-		}
+
+		currentCourses = this.state.courses.map( course => (
+			<CourseCard
+				id={course.id}
+				key={course.id}
+				title={course.title}
+			/>
+		));
 
 		return (
       <div className="container">
