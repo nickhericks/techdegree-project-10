@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// Component for letting the user know that
-// they can't access the requested page.
+// Component for letting user know they can't access requested page.
 const UnhandledError = () => {
   return (
     <div className="container">

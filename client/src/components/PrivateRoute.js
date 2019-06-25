@@ -2,6 +2,8 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { Consumer } from "./Context";
 
+// Higher-Order Component
+// Requires user sign in to access routes
 const PrivateRoute = ({ component: Component, path }) => {
   return (
     <Route
