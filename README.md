@@ -5,7 +5,7 @@ This application provides a way for users to administer a school database contai
 
 ---
 
-<img src="https://res.cloudinary.com/dtqevfsxh/image/upload/v1561495239/portfolio/fullStackApp1.png" width="899px">
+<img src="https://res.cloudinary.com/dtqevfsxh/image/upload/v1561497507/portfolio/fullStackApp1.png" width="899px">
 
 ---
 
