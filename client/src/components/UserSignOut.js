@@ -8,8 +8,6 @@ const AddPlayerForm = () => {
     <Consumer>
       { ({ actions }) => {
 
-				// console.log(actions);
-				
 				// Run handleSignOut method from Provider in Context/index.js file
 				actions.signOut();
 
