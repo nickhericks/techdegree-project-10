@@ -6,23 +6,29 @@ This application provides a way for users to administer a school database contai
 ---
 
 <img src="https://res.cloudinary.com/dtqevfsxh/image/upload/v1561495239/portfolio/fullStackApp1.png" width="899px">
+
 ---
+
 <img src="https://res.cloudinary.com/dtqevfsxh/image/upload/v1561495240/portfolio/fullStackApp2.png" width="899px">
+
 ---
+
 <img src="https://res.cloudinary.com/dtqevfsxh/image/upload/v1561495239/portfolio/fullStackApp3.png" width="899px">
+
+---
 
 ## View project
 1. Download this repo.
 2. Navigate to the project's `api` directory in the command line/terminal.
-  1. Run 'npm install'.
-  2. Run 'npm seed' to seed the SQLite database.
-  3. Run 'npm start' to start the REST API server.
-  4. Visit http://localhost:5000/ in your web browser to test the REST API.
-3. Navigate to the project's `client` directory in the command line/terminal.
-  1. Run 'npm install'.
-  2. Run 'npm start'.
-  3. Run 'npm start' to start the application.
-  4. Visit http://localhost:3000/ in your web browser to view the application.
+3. Run 'npm install'.
+4. Run 'npm seed' to seed the SQLite database.
+5. Run 'npm start' to start the REST API server.
+6. Visit http://localhost:5000/ in your web browser to test the REST API.
+7. Navigate to the project's `client` directory in the command line/terminal.
+8. Run 'npm install'.
+9. Run 'npm start'.
+10. Run 'npm start' to start the application.
+11. Visit http://localhost:3000/ in your web browser to view the application.
 
 <!-- TODO: Set up live version using Heroku -->
 
@@ -35,21 +41,19 @@ The project uses a REST API that I created in a [previous project](https://githu
 
 
 ## Techniques and tools
-- REST API design
-- Node.js
-- Express.js
-- Sequelize ORM
-- DB Browser for SQLite  -  viewing SQLite database tables
-- Postman  -  REST API route testing
-- express-validator  -  database validation
-- bcryptjs  -  password hashing
-- basic-auth (parsing authorization header)
-- cors (npm package to enable all CORS requests)
-- React Context API (managing application's global state)
-- react-router-dom (application routing)
-- create-react-app (initial React project setup)
-- react-markdown (rendering markdown formatted text)
-- axios (Promise-based HTTP requests)
+- **Express.js**  -  web application framework
+- **Sequelize ORM**  -  mapping between JavaScript objects and SQLite
+- **DB Browser for SQLite**  -  viewing SQLite database tables
+- **Postman**  -  REST API route testing
+- **express-validator**  -  database validation
+- **bcryptjs**  -  password hashing
+- **basic-auth**  -  parsing authorization header
+- **cors**  -  enable all CORS requests
+- **React Context API**  -  managing application's global state
+- **react-router-dom**  -  application routing
+- **create-react-app**  -  initial React project setup
+- **react-markdown**  -  rendering markdown formatted text
+- **axios**  -  Promise-based HTTP requests
 
 ## Code example
 The `Courses` component makes a new fetch GET request to the REST API each time the page is loaded and returns a list of all courses, which is then set in component state. We map over the 'courses' array in our component state and use the `CourseCard` component to create the new `currentCourses` array (an array of <li> elements). All CourseCards are then rendered, along with a link to add a new course.
