@@ -13,6 +13,7 @@ export default class UserSignUp extends Component {
 		};
 	} 
 
+	// Create refs for input fields
   firstName = React.createRef();
   lastName = React.createRef();
   emailAddress = React.createRef();
@@ -24,9 +25,11 @@ export default class UserSignUp extends Component {
 			<Consumer>
 				{ ({ actions }) => {
 
+					// When for is submitted
 					const handleSubmit = e => {
 						e.preventDefault();
 
+						// Remove existing validation errors from component state
 						this.setState({
 							errors: []
 						});
@@ -40,17 +43,15 @@ export default class UserSignUp extends Component {
 
 						// Check password and passwordConf match
 						if (userPassword !== userPasswordConf) {
-
 							let passwordMatchValidation = <li className="validation-error" key="1000">Password value does not match Password Confirmation value</li>
 							
+							// Update errors array in component state if passwords don't match
 							this.setState(prevState => ({
 								errors: [
 									...prevState.errors,
 									[ passwordMatchValidation ]
 								]
 							}));
-
-
 						} else {
 							// send POST request to create new user
 							axios({
@@ -63,7 +64,7 @@ export default class UserSignUp extends Component {
 									password: userPassword
 								}
 							})
-							.then( response => {
+							.then( () => {
 								// After user is created, sign in new user
 								actions.signIn(
 									userEmailAddress,
@@ -85,31 +86,22 @@ export default class UserSignUp extends Component {
                       )
                     );
 										
-										this.setState({ errors: errorAlertMessages });
+										// Update component state with form validation errors
+										this.setState({ 
+											errors: errorAlertMessages 
+										});
 
                   } else {
-										// error is due to email already existing
-										// do no tell user email already exists, route to error page
+										// Else, error is due to email already existing
+										// For security, do not tell user that email already exists
+										// Instead, route user to error page
                     const { history } = this.props;
                     history.push("/error");
                   }
 								}
 							});
 						}
-
-							// if user already exists, 
-								// give error
-								// route to error page?
-							// if user does not exist, 
-								// user is created
-								// sign in user
-								// route to previous page?
-
 					};
-
-
-
-
 
 
 					return (
