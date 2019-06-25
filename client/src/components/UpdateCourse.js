@@ -24,6 +24,7 @@ class UpdateCourse extends Component {
     fetch(`http://localhost:5000/api/courses/${this.props.match.params.id}`)
 			.then(response => response.json())
 			.then(responseData => {
+				// Make course data available in component state
 				this.setState({
 					title: responseData.course.title,
 					description: responseData.course.description,
@@ -48,16 +49,9 @@ class UpdateCourse extends Component {
    render() {
     return (
 			<Consumer>
-				{ ({ username, password, name, userId }) => {
+				{ ({ username, password, userId }) => {
 
-
-					const id = this.state.id;
-					const title = this.state.title;
-					const description = this.state.description;
-					const estimatedTime = this.state.estimatedTime;
-					const materialsNeeded = this.state.materialsNeeded;
-					const firstName = this.state.firstName;
-					const lastName = this.state.lastName;
+					const { id, title, description, estimatedTime, materialsNeeded, firstName, lastName } = this.state;
 					const courseOwner = `${firstName} ${lastName}`;
 
 					// Update component state using input name and value
@@ -73,6 +67,7 @@ class UpdateCourse extends Component {
 					const handleSubmit = e => {
 						e.preventDefault();
 
+						// Remove any previous validation errors in component state
 						this.setState({
 							errors: []
 						});
@@ -94,20 +89,16 @@ class UpdateCourse extends Component {
 								userId: userId
               }
             })
-						.then( response => {
-							console.log(`COURSE UPDATED: ${title}`);
-              console.log(response.data);
+						.then( () => {
               const { history } = this.props;
               history.push(`/courses/${id}`);
 						})
 						.catch(error => {
 							// if user not signed in
 							if (error.response.status === 401) {
-								console.log(`You must sign in first`);
 								const { history } = this.props;
 								history.push("/signin");
 							}
-
 							// if validation error (empty required fields)
 							if (error.response.status === 400) {
 								// update array of errors, use to display messages to user
@@ -119,8 +110,10 @@ class UpdateCourse extends Component {
 										</li>
 									)
 								);
-								
-								this.setState({ errors: errorAlertMessages });
+								// Update form validation errors in component state
+								this.setState({ 
+									errors: errorAlertMessages 
+								});
 							}
 						});
 					};
