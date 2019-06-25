@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { 
+	BrowserRouter, 
+	Route, 
+	Switch, 
+	Redirect
+} from 'react-router-dom';
+
 
 // Import components
 import PrivateRoute from './components/PrivateRoute';
@@ -17,8 +23,6 @@ import NotFound from './components/NotFound';
 
 
 export default class App extends Component {
-
-
 	render() {
 		return (
 			<BrowserRouter>
