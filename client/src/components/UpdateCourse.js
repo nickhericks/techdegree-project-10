@@ -50,6 +50,7 @@ class UpdateCourse extends Component {
 			<Consumer>
 				{ ({ username, password, name, userId }) => {
 
+
 					const id = this.state.id;
 					const title = this.state.title;
 					const description = this.state.description;

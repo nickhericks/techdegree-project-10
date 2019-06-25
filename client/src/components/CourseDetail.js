@@ -125,7 +125,8 @@ export default class CourseDetail extends Component {
 											<li 
 												className="button primary"
 												style={{display: showOwnerButtons ? 'block' : 'none' }}
-												>												<button
+												>												
+												<button
 													onClick={handleDeleteCourse}
 													className="primary"
 												>
