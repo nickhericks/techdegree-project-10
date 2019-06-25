@@ -4,16 +4,14 @@ import { Consumer } from "./Context";
 
 
 const Header = () => {
-
   return (
     <Consumer>
       { ({ signedIn, name }) => {
 
+				// Use Provider's signedIn state to define variables for NavLinks
 				let linkOne = signedIn ? '' : '/signup';
 				let linkTwo = signedIn ? '/signout' : '/signin';
-				let textOne = signedIn
-          ? `Welcome, ${name}`
-          : 'Sign Up';
+				let textOne = signedIn ? `Welcome, ${name}` : 'Sign Up';
 				let textTwo = signedIn ? 'Sign Out' : 'Sign In';
 
         return (

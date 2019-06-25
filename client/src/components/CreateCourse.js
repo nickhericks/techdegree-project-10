@@ -23,11 +23,11 @@ class CreateCourse extends Component {
      return (
 			<Consumer>
 				{ ({ username, password, name, userId }) => {
-
 					// On form submit, make POST request to create course
 					const handleSubmit = e => {
 						e.preventDefault();
 
+						// Remove any existing form validation errors from component state
 						this.setState({
               errors: []
             });
@@ -39,7 +39,7 @@ class CreateCourse extends Component {
 						const courseMaterialsNeeded = this.materials.current.value;
 
 
-						// Send POST request to create course
+						// Send POST request with credentials, to create course
 						axios({
               method: "post",
               url: 'http://localhost:5000/api/courses',
@@ -57,18 +57,16 @@ class CreateCourse extends Component {
               }
             })
 						.then( response => {
-							console.log(`CREATED COURSE: ${courseTitle}`);
+							// Route user to newly created course
 							const { history } = this.props;
 							history.push(`/courses/${response.data.id}`);
 						})
 						.catch(error => {
-							// if user not signed in
+							// if user not signed in, route to sign in page
 							if (error.response.status === 401) {
-								console.log(`You must sign in first`);
 								const { history } = this.props;
 								history.push("/signin");
 							}
-
 							// if validation error (empty required fields)
 							if (error.response.status === 400) {
 								// update array of errors, use to display messages to user
@@ -80,8 +78,10 @@ class CreateCourse extends Component {
 										</li>
 									)
 								);
-								
-								this.setState({ errors: errorAlertMessages });
+								// Update component state with form validation errors
+								this.setState({ 
+									errors: errorAlertMessages
+								});
 							}
 						});
 					};
