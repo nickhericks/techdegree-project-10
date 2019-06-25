@@ -5,7 +5,7 @@ import { Consumer } from "./Context";
 
 export default class UserSignIn extends Component {
 	
-
+	// Create refs for input values
 	emailAddress = React.createRef();
 	password = React.createRef();
 
@@ -20,6 +20,7 @@ export default class UserSignIn extends Component {
 					const handleSubmit = e => {
 						e.preventDefault();
 
+						// Use form values to sign in
 						actions.signIn(
               this.emailAddress.current.value,
               this.password.current.value,
