@@ -5,15 +5,20 @@ This application provides a way for users to administer a school database contai
 
 ---
 
-<img src="https://res.cloudinary.com/dtqevfsxh/image/upload/v1558622280/portfolio/library-book-database.png" width="899px">
+<img src="https://res.cloudinary.com/dtqevfsxh/image/upload/v1561495239/portfolio/fullStackApp1.png" width="899px">
 
 ## View project
 1. Download this repo.
-2. Navigate to the project directory in the command line/terminal.
-3. Run 'npm install' (or view the required dependencies listed in the package.json file and install each manually).
+2. Navigate to the project's `api` directory in the command line/terminal.
+3. Run 'npm install'.
 4. Run 'npm seed' to seed the SQLite database.
-5. Run 'npm start' to start the application. (To test the Express server, browse to the URL: http://localhost:5000/)
-6. Use [Postman](https://www.getpostman.com/) for thorough route testing.
+5. Run 'npm start' to start the REST API server.
+6. Visit http://localhost:5000/ in your web browser to test the REST API.
+7. Navigate to the project's `client` directory in the command line/terminal.
+8. Run 'npm install'.
+9. Run 'npm start'.
+10. Run 'npm start' to start the application.
+11. Visit http://localhost:3000/ in your web browser to view the application.
 
 <!-- TODO: Set up live version using Heroku -->
 
