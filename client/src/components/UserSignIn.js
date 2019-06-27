@@ -41,7 +41,7 @@ export default class UserSignIn extends Component {
 										autoFocus
 									/>
 									<input
-										type="text"
+										type="password"
 										ref={this.password}
 										placeholder="Password"
 									/>

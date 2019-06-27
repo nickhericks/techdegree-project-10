@@ -131,12 +131,12 @@ export default class UserSignUp extends Component {
 										placeholder="Email Address"
 									/>
 									<input
-										type="text"
+										type="password"
 										ref={this.password}
 										placeholder="Password"
 									/>
 									<input
-										type="text"
+										type="password"
 										ref={this.passwordConf}
 										placeholder="Confirm Password"
 									/>

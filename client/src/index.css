@@ -284,6 +284,7 @@ li.course-card {
 }
 
 input[type=text],
+input[type=password],
 textarea {
   flex-grow: 1;
   border-width: 0 0 1px 0;
@@ -300,6 +301,7 @@ textarea {
 }
 
 input[type=text]::-webkit-input-placeholder,
+input[type=password]::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder{
   color: rgb(131, 131, 131);
   letter-spacing: 2px;
@@ -307,6 +309,7 @@ textarea::-webkit-input-placeholder{
 }
 
 input[type=text]:focus,
+input[type=password]:focus,
 textarea:focus{
   background-color: rgb(235, 235, 235);
 }
