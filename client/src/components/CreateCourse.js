@@ -139,7 +139,7 @@ class CreateCourse extends Component {
 
                 <ul className="button-list">
                   <li className="button primary">
-                    <input type="submit" value="Update Course" />
+                    <input type="submit" value="Create Course" />
                   </li>
                   <li className="button secondary">
                     <Link to={`/`}>
