@@ -204,6 +204,10 @@ li.course-card {
 	text-align: center;
 	position: relative;
 	background-color: #dadada;
+
+  box-shadow: inset 0px 0px 50px 0px rgba(46, 46, 46, 0.5);
+  overflow: hidden;
+
 }
 
 #new-course-card a {
