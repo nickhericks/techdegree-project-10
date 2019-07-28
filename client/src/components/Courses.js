@@ -24,7 +24,7 @@ export default class Courses extends Component {
 		})
 		.catch( () => {
 			const { history } = this.props;
-			history.push("/error");
+			history.push('/error');
 		});
 	}
 
