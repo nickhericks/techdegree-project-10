@@ -43,7 +43,7 @@ export default class Courses extends Component {
 		));
 
 		return (
-      <div className="container">
+      <div className='container'>
         <ul className="course-list">
           {currentCourses}
 					{/* Display 'Add New Course' card */}
