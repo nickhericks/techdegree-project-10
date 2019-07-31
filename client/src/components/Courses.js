@@ -49,7 +49,7 @@ export default class Courses extends Component {
 					{/* Display 'Add New Course' card */}
           <li className="course-card" id='new-course-card'>
             <Link to={`/courses/create`}>
-              <div className="new-course-card-title">Add New Course</div>
+              <div className='new-course-card-title'>Add New Course</div>
             </Link>
           </li>
         </ul>
